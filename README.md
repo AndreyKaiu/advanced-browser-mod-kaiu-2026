@@ -49,7 +49,6 @@ I saw a lot of issues with the map overview, and since I like to highlight certa
 - Added the ability to translate the add-on into a language other than English. This time, I decided not to implement translation in the "config.json" settings file itself; I was simply tired of Google messing up the formatting for translation, and other AIs aren't perfect. I also didn't implement a complex Fluent-like translation system like Anki, since I needed a file that users could upload to Google and still have something survive. :) And the flt file itself isn't easy to read when a line like `card-templates-enter-new-card-position-1 = Enter new card position (1...{ $val }):` is incomplete. So I came up with my own solution (a bicycle), which is flexible and separates the variable (block) name from the text itself. This means the translator focuses only on its own lines, which never begin with === or !!! It looks like a regular text file with line translations, easy to understand for any human, much less an AI.
 Example:
 
-- 
 `
 !!! === $ $ ; setting, block separator, variable start and end, comment start marker
 === q_Card_State
