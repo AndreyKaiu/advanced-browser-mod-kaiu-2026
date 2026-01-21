@@ -51,11 +51,17 @@ Example:
 
 `
 !!! === $ $ ; setting, block separator, variable start and end, comment start marker
+
 === q_Card_State
+
 Card State
+
 === q_nid
+
 nid (Note ID)
+
 === q_The_field_not_belong_note_type ; in the translation, be sure to check for the presence of two parameters: %s
+
 The field '%s' does not belong to the note type '%s'.
 `
 
