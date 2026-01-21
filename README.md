@@ -80,7 +80,7 @@ You can see the source code here: [https://github.com/AndreyKaiu/anki_addon_loca
 
 **Please do not use reviews for bug reports or support requests.**<br>
 **And be sure to like,** as your support is always needed. Thank you.
-I don't get notified of your reviews, and properly troubleshooting an issue through them is nearly impossible. Instead, please either use the [issue tracker (preferred),](https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026/issues) add-on [support forums](https://forums.ankiweb.net/t/add-ons-simple-image-occlusion-official-support/60307), or just message me at [andreykaiu@gmail.com.](mailto:andreykaiu@gmail.com) Constructive feedback and suggestions are always welcome!
+I don't get notified of your reviews, and properly troubleshooting an issue through them is nearly impossible. Instead, please either use the [issue tracker (preferred),](https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026/issues) add-on [support forums](https://forums.ankiweb.net/t/advanced-browser-mod-kaiu-2026-official-support/68382), or just message me at [andreykaiu@gmail.com.](mailto:andreykaiu@gmail.com) Constructive feedback and suggestions are always welcome!
 
 
 #### VERSIONS
