@@ -11,10 +11,9 @@ I saw a lot of issues with the map overview, and since I like to highlight certa
 
 ![1](https://github.com/user-attachments/assets/3400f571-d49f-44a1-b144-1c50611d5b18)
 
-
    
 
-**What has changed in "advanced-browser-mod-kaiu-2026"**
+#### What has changed in "advanced-browser-mod-kaiu-2026"
 
 - Fixed a bug where the menu wouldn't fit many items (there were too many fields and they couldn't be accessed).
 
@@ -70,23 +69,20 @@ The field '%s' does not belong to the note type '%s'.
 In the addon settings, find the "en.lng" file. Create a copy of this file for your language and translate it. (You can send me this file, and I'll add it and update the addon within a week.)
 You can see the source code here: [https://github.com/AndreyKaiu/anki_addon_localization](https://github.com/AndreyKaiu/anki_addon_localization)
 
-   
 
-**HELP AND SUPPORT**
+#### HELP AND SUPPORT
 
 **Please do not use reviews for bug reports or support requests.**<br>
 **And be sure to like,** as your support is always needed. Thank you.
 I don't get notified of your reviews, and properly troubleshooting an issue through them is nearly impossible. Instead, please either use the [issue tracker (preferred),](https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026/issues) add-on [support forums](https://forums.ankiweb.net/t/add-ons-simple-image-occlusion-official-support/60307), or just message me at [andreykaiu@gmail.com.](mailto:andreykaiu@gmail.com) Constructive feedback and suggestions are always welcome!
 
-   
 
-**VERSIONS**
+#### VERSIONS
 
 - 3.9.1b, date: 2026-01-21.
 
-   
 
-**SPECIAL THANKS**
+#### SPECIAL THANKS
 
 - Thanks for the development help: chatgpt, deepseek, GitHub.copilot - they help a lot (and sometimes they make mistakes), and without them I definitely couldn't have done it, since I don't program in Python and I'm certainly not an Anki developer.
 
