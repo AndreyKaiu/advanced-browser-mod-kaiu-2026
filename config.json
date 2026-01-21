@@ -1,1 +1,6 @@
-advancedbrowser/config.json
+{
+    "Column alignment": "Start",
+    "Language": "",
+    "Show internal fields": false,
+    "Table content": "No interaction"
+}

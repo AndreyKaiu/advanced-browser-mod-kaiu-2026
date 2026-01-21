@@ -1,0 +1,231 @@
+!!! === $ $ ; настройка, разделитель блоков, начало и конец переменной, маркер комментария
+=== q_Card_State
+Состояние карточки
+=== q_nid
+nid (ID записи)
+=== q_cid
+cid (ID карты)
+=== q_Tags_L1 ; теги уровня 1
+Теги (L1)
+=== q_Tags_L2 ; теги уровня 2
+Теги (L2)
+=== q_Tags_L3 ; теги уровня 3
+Теги (L3)
+=== q_Tags_L4 ; теги уровня 4
+Теги (L4)
+=== q_Tags_L5 ; теги уровня 5
+Теги (L5)
+=== q_First_Review
+Первое повторение
+=== q_Last_Review
+Последнее повторение
+=== q_Time_Average
+Время (среднее)
+=== q_Time_Total
+Время (общее)
+=== q_Fastest_Review
+Самое быстрое повторение
+=== q_Slowest_Review
+Самое медленное повторение
+=== q_Overdue_Interval
+Просроченный интервал
+=== q_per_of_Ivl ; процент от запланированного интервала
+% интервала
+=== q_Previous_Interval
+Предыдущий интервал
+=== q_Again_Count
+Счетчик "Снова"
+=== q_Percent_Correct
+Процент правильных
+=== q_Previous_Duration
+Предыдущая длительность
+=== q_Created_Time_Note
+Время создания (записи)
+=== q_Created_Date_Card
+Дата создания (карточка)
+=== q_Created_Time_Card
+Время создания (карточка)
+=== q_not_exists_create_deck
+не существует, хотите создать эту колоду?
+=== q_Current_Deck_Filtered
+Текущая колода (с фильтром)
+=== q_Flag
+Флаг
+=== q_Advanced
+Дополнительно
+=== q_Card
+Карточка
+=== q_Tags
+Теги
+=== q_Note
+Запись
+=== q_Deck
+Колода
+=== q_Ease
+Легкость
+=== q_Original_Deck
+Исходная колода
+=== q_Note_internal
+Запись (внутренняя)
+=== q_Card_internal
+Карточка (внутренняя)
+=== q_Note_ID_in
+ID записи
+=== q_Note_Guid
+GUID записи
+=== q_Model_ID
+ID модели
+=== q_Note_USN
+USN записи
+=== q_Note_Fields
+Поля записи
+=== q_Note_Flags
+Флаги записи
+=== q_Note_Data
+Данные записи
+=== q_Card_ID_in
+ID карточки
+=== q_Deck_ID
+ID колоды
+=== q_Original_Deck_ID
+ID исходной колоды
+=== q_Card_Ordinal
+Порядковый номер карточки
+=== q_Card_USN
+USN карточки
+=== q_Card_Type
+Тип карточки
+=== q_Lrn
+Изучение
+=== q_Rev
+Повторение
+=== q_Card_Queue
+Очередь карточки
+=== q_days
+дни
+=== q_Card_Left
+Осталось карточек
+=== q_Values_may_be_inconsistents
+Вы действительно хотите изменить тип очереди карточки? Значения могут быть несогласованными, если вы не измените тип карточки, срок и т.д....
+=== q_If_the_card_is_not_already_in_a_filtered_deck
+Вы действительно хотите изменить исходный срок? Если карточка еще не находится в отфильтрованной колоде или не перемещена в нее, это может вызвать неожиданные эффекты.
+=== q_Card_Original_Due
+Исходный срок карточки
+=== q_Fields_all
+Поля (все)
+=== q_Fields_in_models
+Поля (в моделях)
+=== q_Fields_Reset
+Сброс полей
+=== q_The_field_not_belong_note_type ; при переводе убедитесь в наличии двух параметров: %s
+Поле '%s' не принадлежит типу записи '%s'.
+=== q_Current_note_fields
+Поля текущей записи
+=== q_Back
+Назад
+=== q_Forward
+Вперед
+=== q_Column_Settings
+Настройки столбцов
+=== q_notes
+записей
+=== q_cards
+карточек
+=== q_All_files
+Все файлы
+=== q_Error
+Ошибка
+=== q_No_data_to_save
+Нет данных для сохранения
+=== q_Save_Column_Settings
+Сохранить настройки столбцов
+=== q_Incorrect_extension
+Неправильное расширение
+=== q_It_is_recommended_to_save
+Рекомендуется сохранять файл с расширением
+=== q_Save_it_anyway
+Все равно сохранить?
+=== q_Success
+Успех
+=== q_Settings_saved_to_file
+Настройки сохранены в файл
+=== q_Columns
+Столбцов
+=== q_Failed_to_save_file
+Не удалось сохранить файл
+=== q_Open_Column_Settings
+Открыть настройки столбцов
+=== q_This_file_has_the_wrong_extension
+Этот файл имеет неправильное расширение
+=== q_Expected
+Ожидается
+=== q_for_settings
+для настроек
+=== q_Still_open
+Все равно открыть?
+=== q_Type_mismatch
+Несовпадение типа
+=== q_This_file_contains_settings_for
+Этот файл содержит настройки для
+=== q_and_you_have_a_browser_open
+а у вас открыт браузер
+=== q_Still_download
+Все равно загрузить?
+=== q_The_file_does_not_contain_column_data
+Файл не содержит данных о столбцах
+=== q_Settings_loaded_from_file
+Настройки загружены из файла
+=== q_Date_saved
+Дата сохранения
+=== q_unknown
+неизвестно
+=== q_The_file_is_damaged_or_incorrectly_formatted
+Файл поврежден или имеет неверный формат
+=== q_Failed_to_upload_file
+Не удалось загрузить файл
+=== q_Column_order
+Порядок столбцов
+=== q_Filter
+Фильтр
+=== q_Column_filter
+Фильтр столбцов
+=== q_Save
+Сохранить
+=== q_Open
+Открыть
+=== q_Column_Operations
+Операции со столбцами
+=== q_To_the_beginning
+В начало
+=== q_Up
+Вверх
+=== q_Down
+Вниз
+=== q_To_the_end
+В конец
+=== q_Delete
+Удалить
+=== q_Sort
+Сортировать
+=== q_No_selected
+Нет выбранных
+=== q_Select_items_to_sort
+Выберите элементы для сортировки
+=== q_Sort_selected
+Сортировка выбранных
+=== q_selected_items_by_name
+выбранные элементы по имени?
+=== q_Select_items_to_remove
+Выберите элементы для удаления
+=== q_Deletion_confirmation
+Подтверждение удаления
+=== q_selected
+выбранных?
+=== q_Sidebar
+Боковая панель
+=== q_Edit_field
+Редактировать поле
+=== q_Update_will_change_the_current_row
+Обновить (изменит текущую строку)
+=== q_Apply_search_will_remember_the_current_line
+Применить поиск (запомнит текущую строку)

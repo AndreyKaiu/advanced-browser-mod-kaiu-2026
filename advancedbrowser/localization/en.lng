@@ -1,0 +1,231 @@
+!!! === $ $ ; setting, block separator, variable start and end, comment start marker
+=== q_Card_State
+Card State
+=== q_nid
+nid (Note ID)
+=== q_cid
+cid (Card ID)
+=== q_Tags_L1 ; level 1 tags
+Tags (L1)
+=== q_Tags_L2 ; level 2 tags
+Tags (L2)
+=== q_Tags_L3 ; level 3 tags
+Tags (L3)
+=== q_Tags_L4 ; level 4 tags
+Tags (L4)
+=== q_Tags_L5 ; level 5 tags
+Tags (L5)
+=== q_First_Review
+First Review
+=== q_Last_Review
+Last Review
+=== q_Time_Average
+Time (Average)
+=== q_Time_Total
+Time (Total)
+=== q_Fastest_Review
+Fastest Review
+=== q_Slowest_Review
+Slowest Review
+=== q_Overdue_Interval
+Overdue Interval
+=== q_per_of_Ivl ; Percentage of scheduled interval
+% of Ivl
+=== q_Previous_Interval
+Previous Interval
+=== q_Again_Count
+Again Count
+=== q_Percent_Correct
+Percent Correct
+=== q_Previous_Duration
+Previous Duration 
+=== q_Created_Time_Note
+Created Time (Note)
+=== q_Created_Date_Card
+Created Date (Card)
+=== q_Created_Time_Card
+Created Time (Card)
+=== q_not_exists_create_deck
+does not exists, do you want to create this deck?
+=== q_Current_Deck_Filtered
+Current Deck (Filtered)
+=== q_Flag
+Flag
+=== q_Advanced
+Advanced
+=== q_Card
+Card
+=== q_Tags
+Tags
+=== q_Note
+Note
+=== q_Deck
+Deck
+=== q_Ease
+Ease
+=== q_Original_Deck
+Original Deck
+=== q_Note_internal
+Note (internal) 
+=== q_Card_internal
+Card (internal)
+=== q_Note_ID_in
+Note ID
+=== q_Note_Guid
+Note Guid
+=== q_Model_ID
+Model ID
+=== q_Note_USN
+Note USN
+=== q_Note_Fields
+Note Fields
+=== q_Note_Flags
+Note Flags
+=== q_Note_Data
+Note Data
+=== q_Card_ID_in
+Card ID
+=== q_Deck_ID
+Deck ID
+=== q_Original_Deck_ID
+Original Deck ID
+=== q_Card_Ordinal
+Card Ordinal
+=== q_Card_USN
+Card USN
+=== q_Card_Type
+Card Type
+=== q_Lrn
+Lrn
+=== q_Rev
+Rev 
+=== q_Card_Queue
+Card Queue
+=== q_days
+days
+=== q_Card_Left
+Card Left
+=== q_Values_may_be_inconsistents
+Do you really want to change the queue type of the card ? Values may be inconsistents if you don't change the card type, due value, etc....
+=== q_If_the_card_is_not_already_in_a_filtered_deck
+Do you really want to change the original due. If the card is not already in a filtered deck, or moved to one, it may creates unexpected effect.
+=== q_Card_Original_Due
+Card Original Due
+=== q_Fields_all
+Fields (all)
+=== q_Fields_in_models
+Fields (in models)
+=== q_Fields_Reset
+Fields Reset
+=== q_The_field_not_belong_note_type ; in the translation, be sure to check for the presence of two parameters: %s
+The field '%s' does not belong to the note type '%s'.
+=== q_Current_note_fields
+Current note fields
+=== q_Back
+Back
+=== q_Forward
+Forward
+=== q_Column_Settings
+Column Settings
+=== q_notes
+notes
+=== q_cards
+cards
+=== q_All_files
+All files
+=== q_Error
+Error
+=== q_No_data_to_save
+No data to save
+=== q_Save_Column_Settings
+Save Column Settings
+=== q_Incorrect_extension
+Incorrect extension
+=== q_It_is_recommended_to_save
+It is recommended to save the file with the extension
+=== q_Save_it_anyway
+Save it anyway?
+=== q_Success
+Success
+=== q_Settings_saved_to_file
+Settings saved to file
+=== q_Columns 
+Columns
+=== q_Failed_to_save_file
+Failed to save file
+=== q_Open_Column_Settings
+Open Column Settings
+=== q_This_file_has_the_wrong_extension
+This file has the wrong extension
+=== q_Expected
+Expected
+=== q_for_settings
+for settings
+=== q_Still_open
+Still open?
+=== q_Type_mismatch
+Type mismatch
+=== q_This_file_contains_settings_for
+This file contains settings for
+=== q_and_you_have_a_browser_open
+and you have a browser open
+=== q_Still_download
+Still download?
+=== q_The_file_does_not_contain_column_data
+The file does not contain column data
+=== q_Settings_loaded_from_file
+Settings loaded from file
+=== q_Date_saved
+Date saved
+=== q_unknown
+unknown
+=== q_The_file_is_damaged_or_incorrectly_formatted
+The file is damaged or incorrectly formatted
+=== q_Failed_to_upload_file
+Failed to upload file
+=== q_Column_order
+Column order
+=== q_Filter
+Filter
+=== q_Column_filter
+Column filter
+=== q_Save
+Save
+=== q_Open
+Open
+=== q_Column_Operations
+Column Operations
+=== q_To_the_beginning
+To the beginning
+=== q_Up
+Up
+=== q_Down
+Down
+=== q_To_the_end
+To the end
+=== q_Delete
+Delete
+=== q_Sort
+Sort
+=== q_No_selected
+No selected
+=== q_Select_items_to_sort
+Select items to sort
+=== q_Sort_selected
+Sort selected
+=== q_selected_items_by_name
+selected items by name?
+=== q_Select_items_to_remove
+Select items to remove
+=== q_Deletion_confirmation
+Deletion confirmation
+=== q_selected
+selected?
+=== q_Sidebar
+Sidebar
+=== q_Edit_field
+Edit field
+=== q_Update_will_change_the_current_row
+Update (will change the current row)
+=== q_Apply_search_will_remember_the_current_line
+Apply search (will remember the current line)

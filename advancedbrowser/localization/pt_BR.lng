@@ -1,0 +1,231 @@
+!!! === $ $ ; setting, block separator, variable start and end, comment start marker
+=== q_Card_State
+Estado do Cartão
+=== q_nid
+nid (ID da Nota)
+=== q_cid
+cid (ID do Cartão)
+=== q_Tags_L1 ; level 1 tags
+Tags (Nível 1)
+=== q_Tags_L2 ; level 2 tags
+Tags (Nível 2)
+=== q_Tags_L3 ; level 3 tags
+Tags (Nível 3)
+=== q_Tags_L4 ; level 4 tags
+Tags (Nível 4)
+=== q_Tags_L5 ; level 5 tags
+Tags (Nível 5)
+=== q_First_Review
+Primeira Revisão
+=== q_Last_Review
+Última Revisão
+=== q_Time_Average
+Tempo (Média)
+=== q_Time_Total
+Tempo (Total)
+=== q_Fastest_Review
+Revisão Mais Rápida
+=== q_Slowest_Review
+Revisão Mais Lenta
+=== q_Overdue_Interval
+Intervalo Atrasado
+=== q_per_of_Ivl ; Percentage of scheduled interval
+% do Intervalo
+=== q_Previous_Interval
+Intervalo Anterior
+=== q_Again_Count
+Contagem de "Novamente"
+=== q_Percent_Correct
+Percentual de Acertos
+=== q_Previous_Duration
+Duração Anterior
+=== q_Created_Time_Note
+Hora de Criação (Nota)
+=== q_Created_Date_Card
+Data de Criação (Cartão)
+=== q_Created_Time_Card
+Hora de Criação (Cartão)
+=== q_not_exists_create_deck
+não existe, deseja criar este baralho?
+=== q_Current_Deck_Filtered
+Baralho Atual (Filtrado)
+=== q_Flag
+Marcador
+=== q_Advanced
+Avançado
+=== q_Card
+Cartão
+=== q_Tags
+Tags
+=== q_Note
+Nota
+=== q_Deck
+Baralho
+=== q_Ease
+Facilidade
+=== q_Original_Deck
+Baralho Original
+=== q_Note_internal
+Nota (interno)
+=== q_Card_internal
+Cartão (interno)
+=== q_Note_ID_in
+ID da Nota
+=== q_Note_Guid
+Guid da Nota
+=== q_Model_ID
+ID do Modelo
+=== q_Note_USN
+USN da Nota
+=== q_Note_Fields
+Campos da Nota
+=== q_Note_Flags
+Marcadores da Nota
+=== q_Note_Data
+Dados da Nota
+=== q_Card_ID_in
+ID do Cartão
+=== q_Deck_ID
+ID do Baralho
+=== q_Original_Deck_ID
+ID do Baralho Original
+=== q_Card_Ordinal
+Ordinal do Cartão
+=== q_Card_USN
+USN do Cartão
+=== q_Card_Type
+Tipo de Cartão
+=== q_Lrn
+Aprendizagem
+=== q_Rev
+Revisão
+=== q_Card_Queue
+Fila do Cartão
+=== q_days
+dias
+=== q_Card_Left
+Cartão Restante
+=== q_Values_may_be_inconsistents
+Você realmente deseja alterar o tipo de fila do cartão? Os valores podem ficar inconsistentes se você não alterar o tipo de cartão, valor de vencimento, etc....
+=== q_If_the_card_is_not_already_in_a_filtered_deck
+Você realmente deseja alterar o vencimento original? Se o cartão não estiver já em um baralho filtrado, ou for movido para um, pode criar efeitos inesperados.
+=== q_Card_Original_Due
+Vencimento Original do Cartão
+=== q_Fields_all
+Campos (todos)
+=== q_Fields_in_models
+Campos (nos modelos)
+=== q_Fields_Reset
+Redefinir Campos
+=== q_The_field_not_belong_note_type ; in the translation, be sure to check for the presence of two parameters: %s
+O campo '%s' não pertence ao tipo de nota '%s'.
+=== q_Current_note_fields
+Campos atuais da nota
+=== q_Back
+Voltar
+=== q_Forward
+Avançar
+=== q_Column_Settings
+Configurações de Colunas
+=== q_notes
+notas
+=== q_cards
+cartões
+=== q_All_files
+Todos os arquivos
+=== q_Error
+Erro
+=== q_No_data_to_save
+Nenhum dado para salvar
+=== q_Save_Column_Settings
+Salvar Configurações de Colunas
+=== q_Incorrect_extension
+Extensão incorreta
+=== q_It_is_recommended_to_save
+Recomenda-se salvar o arquivo com a extensão
+=== q_Save_it_anyway
+Salvar mesmo assim?
+=== q_Success
+Sucesso
+=== q_Settings_saved_to_file
+Configurações salvas no arquivo
+=== q_Columns
+Colunas
+=== q_Failed_to_save_file
+Falha ao salvar arquivo
+=== q_Open_Column_Settings
+Abrir Configurações de Colunas
+=== q_This_file_has_the_wrong_extension
+Este arquivo tem a extensão errada
+=== q_Expected
+Esperado
+=== q_for_settings
+para configurações
+=== q_Still_open
+Ainda abrir?
+=== q_Type_mismatch
+Incompatibilidade de tipo
+=== q_This_file_contains_settings_for
+Este arquivo contém configurações para
+=== q_and_you_have_a_browser_open
+e você tem um navegador aberto
+=== q_Still_download
+Ainda baixar?
+=== q_The_file_does_not_contain_column_data
+O arquivo não contém dados de colunas
+=== q_Settings_loaded_from_file
+Configurações carregadas do arquivo
+=== q_Date_saved
+Data de salvamento
+=== q_unknown
+desconhecido
+=== q_The_file_is_damaged_or_incorrectly_formatted
+O arquivo está danificado ou formatado incorretamente
+=== q_Failed_to_upload_file
+Falha ao carregar arquivo
+=== q_Column_order
+Ordem das Colunas
+=== q_Filter
+Filtro
+=== q_Column_filter
+Filtro de Coluna
+=== q_Save
+Salvar
+=== q_Open
+Abrir
+=== q_Column_Operations
+Operações de Coluna
+=== q_To_the_beginning
+Para o início
+=== q_Up
+Para cima
+=== q_Down
+Para baixo
+=== q_To_the_end
+Para o final
+=== q_Delete
+Excluir
+=== q_Sort
+Ordenar
+=== q_No_selected
+Nenhum selecionado
+=== q_Select_items_to_sort
+Selecionar itens para ordenar
+=== q_Sort_selected
+Ordenar selecionados
+=== q_selected_items_by_name
+itens selecionados por nome?
+=== q_Select_items_to_remove
+Selecionar itens para remover
+=== q_Deletion_confirmation
+Confirmação de exclusão
+=== q_selected
+selecionados?
+=== q_Sidebar
+Barra lateral
+=== q_Edit_field
+Editar campo
+=== q_Update_will_change_the_current_row
+Atualizar (alterará a linha atual)
+=== q_Apply_search_will_remember_the_current_line
+Aplicar busca (lembrará a linha atual)
