@@ -12,7 +12,7 @@ I saw a lot of issues with the map overview, and since I like to highlight certa
 ![1](https://github.com/user-attachments/assets/3400f571-d49f-44a1-b144-1c50611d5b18)
 
 
-## What has changed in "advanced-browser-mod-kaiu-2026"
+**What has changed in "advanced-browser-mod-kaiu-2026"**
 
 - Fixed a bug where the menu wouldn't fit many items (there were too many fields and they couldn't be accessed).
 
