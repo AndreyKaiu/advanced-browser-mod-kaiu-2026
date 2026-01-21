@@ -11,7 +11,13 @@ I saw a lot of issues with the map overview, and since I like to highlight certa
 
 ![1](https://github.com/user-attachments/assets/3400f571-d49f-44a1-b144-1c50611d5b18)
 
-   
+
+#### Installation
+
+- Disable the old add-on for now (Advanced Browser)
+- Download this add-on and reboot your Anki.
+
+The addon was tested under Qt6 on a new version of Anki, meaning it's designed for 2026, and I think it'll last at least a year until the original addon's author makes changes to reflect these ideas, or Anki is redesigned to such an extent that the addon becomes unnecessary...or stops working due to significant changes. So, don't hesitate to use it while it's still around.
 
 #### What has changed in "advanced-browser-mod-kaiu-2026"
 
