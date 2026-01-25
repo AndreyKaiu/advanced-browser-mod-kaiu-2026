@@ -1,4 +1,4 @@
-Version: 3.9.1b. Author of this version: <a href="https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026">https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026</a><br>
+Version: 3.9.2b. Author of this version: <a href="https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026">https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026</a><br>
 Author of the original addon: <a href="https://github.com/AnKing-VIP">https://github.com/AnKing-VIP</a>
 
 <details>

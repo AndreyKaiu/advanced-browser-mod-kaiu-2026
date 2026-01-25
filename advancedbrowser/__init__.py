@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 3.9.1b
+# Version: 3.9.2b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -12,6 +12,7 @@ from __future__ import annotations # to make it work | in old anki on Python 3.9
 from . import basic_fields, config, advanced_fields, note_fields
 from .core import AdvancedBrowser
 import anki.lang
+import re
 from aqt import mw
 from .localization.lang import set_lang
 from aqt.utils import (showText, showInfo, tooltip) 
@@ -116,7 +117,103 @@ def patched_search(self, txt: str) -> None:
     except:
         pass
 
-    original_search(self, txt)
+
+    def transform_search_string(Z):
+        """
+        Converts the search string Z according to the rules:      
+        1. $:aaa → re:a[\u0300-\u036F]*(<[^>]*>)*a[\u0300-\u036F]*(<[^>]*>)*a[\u0300-\u036F]*"
+        2. "$:aaa bbb" → "re:a[\u0300-\u036F]*(<[^>]*>)*a[\u0300-\u036F]*(<[^>]*>)*a[\u0300-\u036F]*(<[^>]*>)* bbb"
+        3. $(aaa) → a[\u0300-\u036F]*(<[^>]*>)*a[\u0300-\u036F]*(<[^>]*>)*a[\u0300-\u036F]*        
+        """
+        
+        flag_rp = False
+        result = Z
+        
+        # Symbols that are considered punctuation marks (we do not process them)
+        punctuation = r'.,!?:;"\'`~@#$%^&*()\[\]{}\\|/<>+-='
+        
+        def is_punctuation(char):
+            """Checks whether a character is a punctuation mark."""
+            return char in punctuation
+        
+        def transform_pattern_content(content):
+            """Converts the contents of the pattern (for $: and $(...))."""
+            transformed = []
+            
+            i = 0
+            while i < len(content):
+                char = content[i]
+                
+                if char.isspace():
+                    #Leave spaces as is
+                    transformed.append(char)
+                    i += 1
+                elif is_punctuation(char):
+                    # Leave punctuation marks as is
+                    transformed.append(char)
+                    i += 1
+                else:
+                    # Non-whitespace character, non-punctuation mark
+                    transformed.append(char)
+                    transformed.append(r'[\u0300-\u036F]*(<[^>]*>)*')
+                    i += 1
+            
+            return ''.join(transformed)
+        
+        # 1. Handling $: patterns outside quotes
+        def replace_dollar_colon_outside_quotes(match):
+            """Handles $: unquoted patterns."""
+            nonlocal flag_rp
+            flag_rp = True
+            
+            content = match.group(1)  # text after $: before space
+            transformed = transform_pattern_content(content)
+            return f'"re:{transformed}"'
+        
+        # Looking for $: outside the quotes (until the next space)
+        pattern_outside_quotes = r'\$:([^\s"]+)(?=\s|$)'
+        result = re.sub(pattern_outside_quotes, replace_dollar_colon_outside_quotes, result)
+        
+        # 2. Handling "$:pattern" inside quotes
+        def replace_dollar_colon_in_quotes(match):
+            """Handles $: patterns inside quotes."""
+            nonlocal flag_rp
+            flag_rp = True
+            
+            full_match = match.group(0)  # whole string with quotes
+            content = match.group(1)     # text between $: and closing quote
+            
+            transformed = transform_pattern_content(content)
+            return f'"re:{transformed}'
+        
+        # We are looking for "$:..." before the closing quote
+        pattern_inside_quotes = r'\"\$:([^"]*)\"'
+        result = re.sub(pattern_inside_quotes, replace_dollar_colon_in_quotes, result)
+        
+        # 3. Processing $(...) patterns
+        def replace_dollar_parentheses(match):
+            """Processes $(...) patterns."""
+            nonlocal flag_rp
+            flag_rp = True
+            
+            content = match.group(1)  # text inside $(...)
+            transformed = transform_pattern_content(content)
+            return transformed
+        
+        # We are looking for $(...) -the minimum match to the first )
+        pattern_dollar_paren = r'\$\(([^)]+)\)'
+        result = re.sub(pattern_dollar_paren, replace_dollar_parentheses, result)
+        
+        return result, flag_rp
+
+
+    txt2, changed = transform_search_string(txt)
+    if changed:        
+        original_search(self, txt2)        
+    else:
+        original_search(self, txt)
+        
+
 
     def _update_navigation_buttons(self, sah):
         """Updates the state of history navigation buttons."""

@@ -1,10 +1,1 @@
-{
-    "mod": 1768988086,
-    "min_point_version": 250600,
-    "max_point_version": 250920,
-    "branch_index": 0,
-    "name": "Advanced Browser - mod kaiu 2026",
-    "disabled": false,
-    "conflicts": [874215009],
-    "update_enabled": true
-}
+{"name": "Advanced Browser - mod kaiu 2026", "mod": 1769346825, "min_point_version": 250700, "max_point_version": 250900, "branch_index": 0, "disabled": false, "conflicts": ["874215009"], "update_enabled": true}
