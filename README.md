@@ -75,6 +75,16 @@ The field '%s' does not belong to the note type '%s'.
 In the addon settings, find the "en.lng" file. Create a copy of this file for your language and translate it. (You can send me this file, and I'll add it and update the addon within a week.)
 You can see the source code here: [https://github.com/AndreyKaiu/anki_addon_localization](https://github.com/AndreyKaiu/anki_addon_localization)
 
+**Added since version 3.9.2b, date: 2026-01-25**
+
+The "$:text" search type is now supported. This will find all words, even if each character is followed by an diacritic (a mark that changes the sound) or if there are tags between letters (bold, etc.) – it will find everything.
+
+The search is not case-sensitive.
+
+To perform this search within a regular expression `("re:")`, you must write it as a call to the $(text) function.
+
+How it works: instead of `$:abc`, the search will be `"re:a[\u0300-\u036F]*(<[^>]*>)*"b[\u0300-\u036F]*(<[^>]*>)*c"`
+
 
 #### HELP AND SUPPORT
 
@@ -84,6 +94,8 @@ I don't get notified of your reviews, and properly troubleshooting an issue thro
 
 
 #### VERSIONS
+
+- 3.9.2b, date: 2026-01-25. The `"$:text"` search type is now supported. This will find all words, even if each character is followed by a diacritical mark (a sign that changes the sound) or if there are tags (bold, etc.) between the letters—it will find everything. The search is not case-sensitive. To perform this search within a regular expression `("re:")`, you must write it as a call to the `$(text)` function.
 
 - 3.9.1b, date: 2026-01-21.
 
