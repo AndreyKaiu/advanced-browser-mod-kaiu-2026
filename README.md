@@ -94,6 +94,7 @@ I don't get notified of your reviews, and properly troubleshooting an issue thro
 
 
 #### VERSIONS
+- 3.9.3b, date: 2026-02-04. Since the "F5" hotkey was used to record audio, and the "F8" hotkey was used to select text color, the hotkeys have changed in this version: F5 ⭢ Shift+F9; F8 ⭢ F10
 
 - 3.9.2b, date: 2026-01-25. The `"$:text"` search type is now supported. This will find all words, even if each character is followed by a diacritical mark (a sign that changes the sound) or if there are tags (bold, etc.) between the letters—it will find everything. The search is not case-sensitive. To perform this search within a regular expression `("re:")`, you must write it as a call to the `$(text)` function.
 
