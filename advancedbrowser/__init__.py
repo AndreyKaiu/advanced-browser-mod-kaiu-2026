@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 3.9.2b
+# Version: 3.9.3b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -251,9 +251,9 @@ def patched_search(self, txt: str) -> None:
     if hasattr(self.browser, '_go_back_or_go_forward') and self.browser._go_back_or_go_forward == True:
         pass # don't remember anything when moving
     else:
-        pressF5 = False # Pressing F5 is processed in a special way
-        if hasattr(self.browser, '_pressF5') and self.browser._pressF5 == True:
-            pressF5 = True
+        pressSHF9 = False # Pressing Shift+F9 is processed in a special way
+        if hasattr(self.browser, '_pressSHF9') and self.browser._pressSHF9 == True:
+            pressSHF9 = True
 
         separator = " cid:"         
         card_ids = self.browser.table.get_selected_card_ids() 
@@ -277,8 +277,8 @@ def patched_search(self, txt: str) -> None:
             except:
                 pass
                     
-        # if you pressed F5 and the request has not changed, then we will update only the card_ids
-        if pressF5 and rq.strip() != "" and rq.strip() == txt.strip() and str_card_ids != "":
+        # if you pressed Shift+F9 and the request has not changed, then we will update only the card_ids
+        if pressSHF9 and rq.strip() != "" and rq.strip() == txt.strip() and str_card_ids != "":
             # replace it with it
             sah[self.browser._all_history_n] = rq + separator + str_card_ids    
         else:
@@ -292,7 +292,7 @@ def patched_search(self, txt: str) -> None:
                 if len(sah) > 100:
                     sah = sah[:100]  # We leave only the last 100 requests
 
-    self.browser._pressF5 = False
+    self.browser._pressSHF9 = False
 
     # Update the state of the buttons
     _update_navigation_buttons(self, sah)

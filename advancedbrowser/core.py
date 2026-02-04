@@ -1707,7 +1707,7 @@ def create_toolbar_for_left_panel(browser: Browser):
         try:
             show_wait_cursor()
 
-            browser._pressF5 = True
+            browser._pressSHF9 = True
             try:
                 top_row = browser.table._current().row()
             except:
@@ -2010,17 +2010,17 @@ def create_toolbar_for_left_panel(browser: Browser):
     btn_edit_field = btn_create(text="✏️", tooltip=q("q_Edit_field") + " [F2]", style_sheet=style_btn_right)    
     btn_edit_field.clicked.connect(lambda: go_edit_field(browser))
     btn_edit_field.setShortcut(QKeySequence("F2"))
-    layout.addWidget(btn_edit_field)
+    layout.addWidget(btn_edit_field)       
 
-    btn_refresh_tbl = btn_create(text="↻", tooltip=q("q_Update_will_change_the_current_row") + " [F5]", style_sheet=style_btn_right)    
-    btn_refresh_tbl.clicked.connect(lambda: table_reset(browser))
-    btn_refresh_tbl.setShortcut(QKeySequence("F5"))
-    layout.addWidget(btn_refresh_tbl)    
-
-    btn_reorder_columns = btn_create(text="⮂", tooltip=q("q_Column_order") + " [F8]", style_sheet=style_btn_right)    
+    btn_reorder_columns = btn_create(text="⮂", tooltip=q("q_Column_order") + " [F10]", style_sheet=style_btn_right)    
     btn_reorder_columns.clicked.connect(lambda: show_reorder_columns(browser))
-    btn_reorder_columns.setShortcut(QKeySequence("F8"))
+    btn_reorder_columns.setShortcut(QKeySequence("F10"))
     layout.addWidget(btn_reorder_columns)
+
+    btn_refresh_tbl = btn_create(text="↻", tooltip=q("q_Update_will_change_the_current_row") + " [Shift+F9]", style_sheet=style_btn_right)    
+    btn_refresh_tbl.clicked.connect(lambda: table_reset(browser))
+    btn_refresh_tbl.setShortcut(QKeySequence("Shift+F9"))
+    layout.addWidget(btn_refresh_tbl) 
 
     btn_run_find_tbl = btn_create(text="🔍", tooltip=q("q_Apply_search_will_remember_the_current_line") + " [F9]", style_sheet=style_btn_right)    
     btn_run_find_tbl.clicked.connect(lambda: run_find_tbl(browser))
