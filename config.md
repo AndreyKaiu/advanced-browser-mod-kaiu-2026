@@ -1,9 +1,11 @@
-Version: 3.9.3b. Author of this version: <a href="https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026">https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026</a><br>
+Version: 3.9.5b. Author of this version: <a href="https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026">https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026</a><br>
 Author of the original addon: <a href="https://github.com/AnKing-VIP">https://github.com/AnKing-VIP</a>
 
 <details>
 <summary><b> =EN= Notes. Click to expand</b></summary>
 The configuration options are:<br>
+<br>
+- <b>"Card Info Dialog Always On Top"</b>: Boolean (i.e. "true" or "false"). Allows you to display information about the map in a window that will be on top of the window that called it.<br>
 <br>
 - <b>"Column alignment"</b>: Either:<br>
 &nbsp&nbsp&nbsp- <i><b>"Start"</b></i>: text in column is left aligned (or right aligned for right-to-left scripts)<br>
@@ -23,6 +25,8 @@ The configuration options are:<br>
 <summary><b>=RU= Примечания.</b></summary>
 Параметры конфигурации:<br>
 <br>
+- <b>"Card Info Dialog Always On Top"</b>: Логическое значение (т.е. «true» или «false»). Позволяет отображать информацию о карте в окне, которое будет располагаться поверх окна, вызвавшего эту функцию.<br>
+<br>
 - <b>"Column alignment"</b>: Одно из:<br>
 &nbsp&nbsp&nbsp- <i><b>"Start"</b></i>: текст в столбце выравнивается по левому краю (или по правому — для письма справа налево)<br>
 &nbsp&nbsp&nbsp- <i><b>"Center"</b></i>: текст в столбце выравнивается по центру<br>
@@ -40,6 +44,8 @@ The configuration options are:<br>
 <details>
 <summary><b>=PT-BR= Notas.</b></summary>
 As opções de configuração são:<br>
+<br>
+- <b>"Card Info Dialog Always On Top"</b>: Booleano (ou seja, "true" ou "false"). Permite exibir informações sobre o mapa em uma janela que ficará sobreposta à janela que o chamou.<br>
 <br>
 - <b>"Column alignment"</b>: Uma das opções:<br>
 &nbsp&nbsp&nbsp- <i><b>"Start"</b></i>: o texto na coluna é alinhado à esquerda (ou à direita para sistemas de escrita da direita para a esquerda)<br>

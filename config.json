@@ -1,6 +1,7 @@
 {
+    "Card Info Dialog Always On Top" : true,
     "Column alignment": "Start",
     "Language": "",
     "Show internal fields": false,
-    "Table content": "No interaction"
+    "Table content": "No interaction"    
 }

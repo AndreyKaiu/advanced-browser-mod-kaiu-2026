@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 3.9.3b
+# Version: 3.9.5b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -18,7 +18,7 @@ from aqt.qt import QTimer
 addon_dir = mw.addonManager.addonFromModule(__name__)
 meta = mw.addonManager.addonMeta(addon_dir)
 addon_name = meta.get("name", "???")
-human_version = meta.get("human_version", "3.9.3b")
+human_version = meta.get("human_version", "3.9.5b")
 version_addon = "Version: " + human_version
 
 msgHTML = """
