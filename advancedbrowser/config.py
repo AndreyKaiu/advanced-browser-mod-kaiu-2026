@@ -10,14 +10,18 @@ userOption = None
 
 def getUserOption():
     global userOption
-    if userOption is None:
-        userOption = aqt.mw.addonManager.getConfig(__name__)
-    return userOption
+    # if userOption is None:
+    #     userOption = aqt.mw.addonManager.getConfig(__name__)
+    # return userOption
+    return aqt.mw.addonManager.getConfig(__name__) 
+
+
+def getCardInfoDialogAlwaysOnTop():
+    return getUserOption().get("Card Info Dialog Always On Top", True)
 
 
 def getEachFieldInSingleList():
-    return getUserOption().get("Use a single list for fields", False)
-    
+    return getUserOption().get("Use a single list for fields", False)   
 
 
 def getUseInternalFields():

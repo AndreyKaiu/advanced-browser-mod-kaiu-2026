@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 3.9.2b
+# Version: 3.9.5b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -20,6 +20,9 @@ from aqt import gui_hooks
 from aqt.browser import Column as BuiltinColumn, DataModel, SearchContext, CardState, NoteState
 from anki.errors import NotFoundError, SearchError
 from typing import Dict, Optional
+from aqt.theme import theme_manager
+from aqt.utils import tr
+from .config import getCardInfoDialogAlwaysOnTop
 
 from . import config
 import datetime
@@ -65,7 +68,6 @@ def restore_cursor():
 
 # ⬇⬇⬇⬇⬇ kaiu: 2026-01-05 SHOW AND COLOR ON SELECTION ⬇⬇⬇⬇⬇ +++++ 
 from aqt.browser.table.table import StatusDelegate
-from aqt.theme import theme_manager
 from anki.collection import BrowserRow
 from aqt.qt import QItemDelegate, QBrush, QPalette, QStyleOptionViewItem, QApplication, QColor, QPen, QWidget, QCheckBox, QCursor, QDialog, QFileDialog, QInputDialog, QMenu, QPushButton, QScrollArea, QSizePolicy, QSlider, QThreadPool, QToolTip, QVBoxLayout,QTimer, Qt
 from aqt import colors
@@ -1003,7 +1005,7 @@ class EnhancedColumnOrderDialog(QDialog):
         else:
             font.setFamily("monospace")
         font.setPointSize(10)      
-        font.setWeight(400)
+        font.setWeight(400)        
         self.list_widget.setFont(font)
 
         if pyqt_version == "PyQt6":            
@@ -1022,12 +1024,24 @@ class EnhancedColumnOrderDialog(QDialog):
 
         self.list_widget.setAlternatingRowColors(True)        
         main_layout.addWidget(self.list_widget)
+
+
+        
         
         # Quick Actions Bar
         quick_actions = QHBoxLayout()
         
         # Move group
         move_group = QGroupBox(" " + q("q_Column_Operations") + " ")
+        
+        if theme_manager.night_mode:
+            # For a dark theme, set the title text to white
+            move_group.setStyleSheet("""
+                QGroupBox {
+                    color: white;                    
+                }                
+            """)
+
         move_layout = QVBoxLayout()
         quick_actions.addSpacing(2)
         quick_actions.addStretch()
@@ -1198,11 +1212,9 @@ class EnhancedColumnOrderDialog(QDialog):
             #Adding a tooltip with information
             # if col_type:
             #     item.setToolTip(f"Type: {col_type}\nName: {display_name}")
-            
-            item.setIcon(QIcon.fromTheme("view-list-details"))
-            item.setForeground(QColor("black"))                       
+                                          
             self.list_widget.addItem(item)
-        
+
         self.update_stats()
 
 
@@ -1973,6 +1985,36 @@ def create_toolbar_for_left_panel(browser: Browser):
             pass
 
 
+
+    def show_hide_card_info(browser: Browser):
+        """Shows or hides the map information window"""        
+        # We get the information manager
+        card_info = browser._card_info
+
+        if not getCardInfoDialogAlwaysOnTop():
+            card_info.show()
+        else:        
+            # Checking if the dialog exists and is visible
+            if card_info._dialog is not None and card_info._dialog.isVisible():
+                # If the dialogue exists and is visible, close it      
+                # card_info.close()  it opens so slowly!!!
+
+                # Just hide, don't close
+                card_info._dialog.hide()
+            else:
+                if card_info._dialog is None:
+                    # If the window has not yet been created, create it using show()
+                    card_info.show()
+                else:
+                    # If the window exists but is hidden, show it
+                    card_info._dialog.show()
+                    card_info._dialog.raise_()
+                
+                # Returning focus to the browser
+                browser.activateWindow()
+                browser.raise_()
+
+
     def run_find_tbl(browser: Browser):
         try:
             show_wait_cursor()
@@ -2026,6 +2068,11 @@ def create_toolbar_for_left_panel(browser: Browser):
     btn_run_find_tbl.clicked.connect(lambda: run_find_tbl(browser))
     btn_run_find_tbl.setShortcut(QKeySequence("F9"))
     layout.addWidget(btn_run_find_tbl)
+
+    btn_card_info = btn_create(text="ⓘ", tooltip=tr.actions_card_info() + " [Shift+F1]", style_sheet=style_btn_right)    
+    btn_card_info.clicked.connect(lambda: show_hide_card_info(browser))
+    btn_card_info.setShortcut(QKeySequence("Shift+F1"))
+    layout.addWidget(btn_card_info)
     
     # Stretch to the right
     layout.addStretch()

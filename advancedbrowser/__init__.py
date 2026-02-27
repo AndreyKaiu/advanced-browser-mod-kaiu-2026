@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 3.9.3b
+# Version: 3.9.5b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -16,6 +16,7 @@ import re
 from aqt import mw
 from .localization.lang import set_lang
 from aqt.utils import (showText, showInfo, tooltip) 
+from .config import getCardInfoDialogAlwaysOnTop
 
 from .localization.lang import q
 
@@ -47,18 +48,237 @@ try:
     from PyQt6.QtWidgets import QAbstractItemView, QFrame, QStyle, QLabel, QHBoxLayout, QVBoxLayout, QLayout, QWidgetItem, QSpacerItem, QSizePolicy, QDialogButtonBox
     from PyQt6.QtCore import QRect, QPoint, QSize
     from PyQt6.QtGui import QShortcut, QKeySequence
+    QMessageBox_Warning = QMessageBox.Icon.Warning
+    QMessageBox_Ok = QMessageBox.StandardButton.Ok
+    QMessageBox_Cancel = QMessageBox.StandardButton.Cancel    
+    Qt_Tool = Qt.WindowType.Tool
+    Qt_NonModal = Qt.WindowModality.NonModal
     pyqt_version = "PyQt6"
 except ImportError:
     from PyQt5.QtWidgets import QAbstractItemView, QFrame, QStyle, QLabel, QHBoxLayout, QVBoxLayout, QLayout, QWidgetItem, QSpacerItem, QSizePolicy, QDialogButtonBox
     from PyQt5.QtCore import QRect, QPoint, QSize
     from PyQ5.QtGui import QShortcut, QKeySequence
+    QMessageBox_Warning = QMessageBox.Warning
+    QMessageBox_Ok = QMessageBox.Ok
+    QMessageBox_Cancel = QMessageBox.Cancel
+    Qt_Tool = Qt.Tool
+    Qt_NonModal = Qt.NonModal
     pyqt_version = "PyQt5"
+   
+
+
+# ========== ⬇⬇⬇⬇⬇ CardInfoDialogAlwaysOnTop ⬇⬇⬇⬇⬇ ==========
+import aqt.browser.card_info
+
+# Preserving the original classes
+OriginalCardInfoDialog = aqt.browser.card_info.CardInfoDialog
+OriginalCardInfoManager = aqt.browser.card_info.CardInfoManager
+OriginalBrowserCardInfo = aqt.browser.card_info.BrowserCardInfo
+OriginalReviewerCardInfo = aqt.browser.card_info.ReviewerCardInfo 
+OriginaPreviousReviewerCardInfo = aqt.browser.card_info.PreviousReviewerCardInfo 
+
+
+class ToolOnlyCardInfoDialog(OriginalCardInfoDialog):
+    """Dialog that is only on top of the parent (via Tool)"""
+
+    def __init__(self, parent, mw, card, on_close=None, geometry_key=None, window_title=None):
+        # print(f"ToolOnlyCardInfoDialog: parent={parent}")
+
+        if not getCardInfoDialogAlwaysOnTop():
+            super().__init__(parent, mw, card, on_close, geometry_key, window_title)
+            self.setMinimumSize(100, 100)  # Changing the minimum size
+        else:
+                # If parent is None, use the main window
+            if parent is None:
+                parent = mw
+                # print("  parent was None, use mw")
+
+            super().__init__(parent, mw, card, on_close, geometry_key, window_title)                
+            self.setMinimumSize(100, 100)  # Changing the minimum size
+            
+            print("getCardInfoDialogAlwaysOnTop 1")      
+            # Getting the current flags
+            flags = self.windowFlags()
+            
+            # In PyQt6 constants are in Qt.WindowType
+            # We remove modality through WindowModality, and not through flags
+            self.setWindowModality(Qt_NonModal)
+            
+            # Add a Tool (this is guaranteed to be on top of the parent)
+            # But make sure it doesn't conflict with other flags
+            if not (flags & Qt_Tool):
+                flags |= Qt_Tool
+            
+            # DO NOT add WindowStaysOnTopHint -it does it on top of ALL
+            
+            self.setWindowFlags(flags)
+            
+            # Important: set the attribute for correct behavior
+            self.setAttribute(Qt.WidgetAttribute.WA_AlwaysShowToolTips, True)
+            
+            # We show
+            self.show()
+            
+            # Raise above the parent
+            self.raise_()   
+       
+               
+        
+
+class ToolOnlyCardInfoManager(OriginalCardInfoManager):
+    """Manager for dialogue with Tool"""
+
+    def __init__(self, mw, geometry_key, window_title):
+        super().__init__(mw, geometry_key, window_title)
+        self._dialog = None
+        self._browser_window = None
+
+    def set_browser_window(self, browser_window):
+        """Save the link to the browser window"""
+        self._browser_window = browser_window
+        
+    def show(self) -> None:
+        """Show the window only when called explicitly"""
+        if not getCardInfoDialogAlwaysOnTop():
+            if self._dialog:
+                self._dialog.activateWindow()
+                self._dialog.raise_()
+            else:
+                self._dialog = OriginalCardInfoDialog(
+                    None,
+                    self.mw,
+                    self._card,
+                    self._on_close,
+                    self.geometry_key,
+                    self.window_title,
+                )
+        else:
+            print("getCardInfoDialogAlwaysOnTop 2")     
+            # Determining the parent
+            if self._browser_window and self._browser_window.isVisible():
+                parent = self._browser_window
+                # print(f"  use the browser window:{parent}")
+            else:
+                parent = mw.app.activeWindow() or mw
+                # print(f"  parent={parent}")
+        
+            if self._dialog:
+                print("getCardInfoDialogAlwaysOnTop 3")  
+                try:
+                    if self._dialog.isVisible():
+                        self._dialog.raise_()
+                    else:
+                        self._dialog.show()
+                except:
+                    self._dialog = None
+                    self.show()
+            else:
+                print("getCardInfoDialogAlwaysOnTop 4")          
+                self._dialog = ToolOnlyCardInfoDialog(
+                    parent,
+                    self.mw,
+                    self._card,
+                    self._on_close,
+                    self.geometry_key,
+                    self.window_title,
+                )
+
+
+    def set_card(self, card):
+        """We only update the map, DO NOT show the window automatically"""
+        if not getCardInfoDialogAlwaysOnTop():
+            self._card = card
+            if self._dialog:
+                self._dialog.update_card(card.id if card else None)
+        else:                
+            self._card = card
+            if self._dialog:
+                try:
+                    self._dialog.update_card(card.id if card else None)
+                    # DO NOT call raise_() automatically
+                except:
+                    self._dialog = None
+
+
+class ToolBrowserCardInfo(ToolOnlyCardInfoManager):
+    def __init__(self, mw: aqt.AnkiQt):
+        super().__init__(
+            mw,
+            "revlog",
+            without_unicode_isolation(
+                tr.card_stats_current_card(context=tr.qt_misc_browse())
+            ),
+        )
+
+class ToolReviewerCardInfo(ToolOnlyCardInfoManager):
+    def __init__(self, mw: aqt.AnkiQt):
+        super().__init__(
+            mw,
+            "reviewerCardInfo",
+            without_unicode_isolation(
+                tr.card_stats_current_card(context=tr.decks_study())
+            ),
+        )
+
+
+class ToolPreviousReviewerCardInfo(ToolOnlyCardInfoManager):
+    def __init__(self, mw: aqt.AnkiQt):
+        super().__init__(
+            mw,
+            "previousReviewerCardInfo",
+            without_unicode_isolation(
+                tr.card_stats_previous_card(context=tr.decks_study())
+            ),
+        )
+
+
+
+def patch_card_info():
+    """Replacing classes"""       
+    aqt.browser.card_info.CardInfoDialog = ToolOnlyCardInfoDialog
+    aqt.browser.card_info.CardInfoManager = ToolOnlyCardInfoManager
+    aqt.browser.card_info.BrowserCardInfo = ToolBrowserCardInfo
+    aqt.browser.card_info.ReviewerCardInfo = ToolReviewerCardInfo    
+    aqt.browser.card_info.PreviousReviewerCardInfo = ToolPreviousReviewerCardInfo
+    
+    # tooltip("✅ CardInfo: only on top of parent (Tool)")
+
+# I will patch
+patch_card_info()
+
+
 
 
 original_init = Browser.__init__
 
 def patched_init(self, *args, **kwargs):
     original_init(self, *args, **kwargs)
+
+    if getCardInfoDialogAlwaysOnTop():
+        # Create the correct BrowserCardInfo with the necessary parameters
+        from anki.lang import without_unicode_isolation
+        from aqt import tr
+
+        # Close the old one if there is one
+        if hasattr(self, '_card_info') and self._card_info:
+            try:
+                self._card_info.close()
+            except:
+                pass
+
+        # Create a new one with the correct parameters
+        self._card_info = ToolOnlyCardInfoManager(
+            self.mw,
+            "revlog",
+            without_unicode_isolation(
+                tr.card_stats_current_card(context=tr.qt_misc_browse())
+            )
+        )
+
+        # Save the link to the browser window
+        self._card_info.set_browser_window(self)
+
+# ========== ⬆⬆⬆⬆⬆ CardInfoDialogAlwaysOnTop ⬆⬆⬆⬆⬆ ==========
 
     # We are waiting for complete initialization
     QTimer.singleShot(50, lambda: self.setup_double_click_handler())
@@ -384,8 +604,77 @@ from anki.collection import (
 
 from aqt.browser.sidebar.tree import SidebarTreeView 
 
-original_update_search = SidebarTreeView.update_search
 
+from aqt.browser.sidebar.item import SidebarItem
+from aqt.qt import QMenu, QModelIndex, QMessageBox
+from aqt.deckbrowser import DeckBrowser
+from anki.decks import DeckCollapseScope, DeckId, DeckTreeNode
+
+from aqt.operations.deck import (
+    add_deck_dialog,
+    remove_decks,
+    rename_deck,
+    reparent_decks,
+    set_current_deck,
+    set_deck_collapsed,
+)
+from anki.decks import DeckCollapseScope, DeckId, DeckTreeNode
+
+
+
+
+# NOT CRITICAL. PERHAPS SOMEDAY MAKE IT AN OPTION FOR THOSE WHO OFTEN DELETE BY ACCIDENT
+# original__delete = DeckBrowser._delete
+
+# def patched__delete(self, did: DeckId) -> None:
+#     # ask, then delete
+#     msg = QMessageBox(self.mw)
+#     msg.setWindowTitle(tr.actions_delete())
+#     msg.setIcon(QMessageBox_Warning)
+#     msg.setText(f"{tr.decks_delete_deck()}'?")    
+#     msg.setStandardButtons(QMessageBox_Cancel | QMessageBox_Ok)
+#     msg.setDefaultButton(QMessageBox_Cancel)
+#     if msg.exec() == QMessageBox_Ok:
+#         original__delete(self, did)
+
+# DeckBrowser._delete = patched__delete 
+
+
+# original_delete_decks = SidebarTreeView.delete_decks
+
+# def patched_delete_decks(self, _item: SidebarItem) -> None:
+#     # ask, then delete
+#     msg = QMessageBox(self.mw)
+#     msg.setWindowTitle(tr.actions_delete())
+#     msg.setIcon(QMessageBox_Warning)
+#     msg.setText(f"{tr.decks_delete_deck()}'?")    
+#     msg.setStandardButtons(QMessageBox_Cancel | QMessageBox_Ok)
+#     msg.setDefaultButton(QMessageBox_Cancel)
+#     if msg.exec() == QMessageBox_Ok:
+#         original_delete_decks(self, _item)
+
+# SidebarTreeView.delete_decks = patched_delete_decks
+
+
+
+original__maybe_add_add_action = SidebarTreeView._maybe_add_add_action
+
+def deck_create(selfdb : DeckBrowser, item: SidebarItem):
+    # did = DeckId(item.id)    
+    if op := add_deck_dialog(
+            parent=selfdb.mw, default_text = item.name_prefix + item.name + "::" + selfdb.mw.col.decks.current()["name"]
+        ):
+            op.run_in_background()        
+
+def patched__maybe_add_add_action(self, menu: QMenu, item: SidebarItem) -> None:
+    if item.item_type.can_be_added_to():
+        menu.addAction(tr.browsing_add_notes(), lambda: self._on_add(item))
+        menu.addAction(tr.decks_create_deck(), lambda: deck_create(mw.deckBrowser, item) ) # lambda: mw.deckBrowser._on_create())        
+
+SidebarTreeView._maybe_add_add_action = patched__maybe_add_add_action
+
+
+original_update_search = SidebarTreeView.update_search
 
 def patched_update_search(
         self,
