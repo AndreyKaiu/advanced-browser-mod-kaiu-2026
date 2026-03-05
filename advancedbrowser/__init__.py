@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 3.9.5b
+# Version: 3.9.6b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -248,10 +248,10 @@ patch_card_info()
 
 
 
-
 original_init = Browser.__init__
 
 def patched_init(self, *args, **kwargs):
+
     original_init(self, *args, **kwargs)
 
     if getCardInfoDialogAlwaysOnTop():
@@ -304,6 +304,9 @@ def patched_init(self, *args, **kwargs):
 
 
 Browser.__init__ = patched_init
+
+
+
 
 
 original_update_history = Browser.update_history

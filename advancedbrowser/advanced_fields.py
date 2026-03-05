@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 3.9.2b
+# Version: 3.9.6b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -407,6 +407,74 @@ select part from (
         self.customColumns.append(cc)
         # ------------------------------- #
 
+        # step
+        def cStep(c, n, t):
+            count = mw.col.db.scalar(f"""SELECT COUNT(*)
+FROM revlog r1
+WHERE r1.cid = {c.id} 
+AND r1.id > COALESCE((
+    SELECT MAX(r2.id)
+    FROM revlog r2
+    WHERE r2.cid = {c.id} AND r2.ease < 2
+), 0)
+""")
+            return count
+
+
+        srt = """(SELECT COUNT(*)
+FROM revlog r1
+WHERE r1.cid = c.id 
+AND r1.id > COALESCE((
+    SELECT MAX(r2.id)
+    FROM revlog r2
+    WHERE r2.cid = c.id AND r2.ease < 2
+), 0))"""         
+        
+
+        cc = advBrowser.newCustomColumn(
+            type='cstep',
+            name=q("q_Step"),
+            onData=cStep,                                    
+            onSort=getOnSort(srt)
+        )
+        self.customColumns.append(cc)
+        # ------------------------------- #
+        
+        
+        # Last interval
+        def cLastIvl(c, n, t):
+            ivl = mw.col.db.scalar(
+                "select ivl from revlog where cid = ? "
+                "order by id desc limit 1", c.id)
+            if ivl is None:
+                return
+            elif ivl == 0:
+                return mw.col.format_timespan(0, context=FormatTimeSpanContext.INTERVALS)
+            elif ivl > 0:
+                # Display days in the first 3 months https://github.com/AnKing-VIP/advanced-browser/issues/87
+                if ivl > 30 and ivl < 91: 
+                    d30 = mw.col.format_timespan(30 * 86400, context=FormatTimeSpanContext.INTERVALS)
+                    if "30" in d30:                        
+                        return d30.replace("30", str(ivl))
+                    else:                        
+                        return mw.col.format_timespan(ivl * 86400, context=FormatTimeSpanContext.INTERVALS)
+                else:
+                    return mw.col.format_timespan(ivl * 86400, context=FormatTimeSpanContext.INTERVALS)
+            else:
+                return mw.col.format_timespan(-ivl, context=FormatTimeSpanContext.INTERVALS)
+
+        srt = ("(select ivl from revlog where cid = c.id "
+               "order by id desc limit 1) asc nulls last")
+
+        cc = advBrowser.newCustomColumn(
+            type='clastivl',
+            name=q("q_Last_Interval"),
+            onData=cLastIvl,
+            onSort=getOnSort(srt)
+        )
+        self.customColumns.append(cc)
+        # ------------------------------- #
+
         # Previous interval
         def cPrevIvl(c, n, t):
             ivl = mw.col.db.scalar(
@@ -472,8 +540,8 @@ select part from (
         self.customColumns.append(cc)
         # ------------------------------- #
 
-        # Previous duration
-        def cPrevDur(c, n, t):
+        # Last duration
+        def cLastDur(c, n, t):
             time = mw.col.db.scalar(
                 "select time/1000.0 from revlog where cid = ? "
                 "order by id desc limit 1", c.id)
@@ -483,6 +551,28 @@ select part from (
 
         srt = ("(select time/1000.0 from revlog where cid = c.id "
                "order by id desc limit 1) asc nulls last")
+
+        cc = advBrowser.newCustomColumn(
+            type='clastdur',
+            name=q("q_Last_Duration"),
+            onData=cLastDur,
+            onSort=getOnSort(srt)
+        )
+        self.customColumns.append(cc)
+        # ------------------------------- #
+
+
+        # Previous duration
+        def cPrevDur(c, n, t):
+            time = mw.col.db.scalar(
+                "select time/1000.0 from revlog where cid = ? "
+                "order by id desc limit 1 offset 1", c.id)
+            if time:
+                return mw.col.format_timespan(time)
+            return None
+
+        srt = ("(select time/1000.0 from revlog where cid = c.id "
+               "order by id desc limit 1 offset 1) asc nulls last")
 
         cc = advBrowser.newCustomColumn(
             type='cprevdur',
