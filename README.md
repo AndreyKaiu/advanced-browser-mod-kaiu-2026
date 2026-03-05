@@ -91,6 +91,12 @@ Fixed font display in the column list window in dark mode.
 
 A button for displaying card information, a dedicated hotkey (Shift+F1), and an option to always display the window on top of its original window have been added. The add-on settings now include the "Card Info Dialog Always On Top" setting, which is set to "true" by default. You can set it to "false" if significant errors are detected in your program. For now, I find it much more convenient. The card information window doesn't disappear when I switch between modes, and it can now be reduced to 100 pixels (reduce the font size as usual: hold down the "Ctrl" key and scroll the mouse wheel). However, if you don't like viewing card information in a separate window, you might want to try the ["Browser Card Info Bar"](https://ankiweb.net/shared/info/2140680811) add-on.
 
+**Added since version 3.9.6b, date: 2026-03-05**
+
+The "Previous Duration" field has been corrected. Since there were "Previous Duration" and "Previous Interval" fields, I've added "Last Duration" and "Last Interval" fields. The "Last Interval" field is not exactly the same as the "Interval" field and will show a more accurate value for "Learn," which is stored in the card statistics.
+
+The "Step" field has been added. This field shows how many successful learning steps you've completed. If you can view "Reviews" from the card statistics, it will only be equal to the "Step" field if you've never clicked "Again." A "Step" of 7 typically indicates strong memorization, especially if the last interval was more than 14 days apart.
+
 #### HELP AND SUPPORT
 
 **Please do not use reviews for bug reports or support requests.**<br>
@@ -99,6 +105,8 @@ I don't get notified of your reviews, and properly troubleshooting an issue thro
 
 
 #### VERSIONS
+- 3.9.6b, date: 2026-03-05. The "Previous Duration" field has been corrected. Added fields: "Last Duration", "Last Interval", "Step".
+  
 - 3.9.5b, date: 2026-02-27. Fixed font display in the column list window in dark mode. Added a button to display card information, a dedicated hotkey, and an option to always show the window on top.
   
 - 3.9.4b, date: 2026-02-16. Added the ability to create a deck from the context menu of the deck item
