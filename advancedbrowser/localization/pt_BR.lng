@@ -229,3 +229,9 @@ Editar campo
 Atualizar (alterará a linha atual)
 === q_Apply_search_will_remember_the_current_line
 Aplicar busca (lembrará a linha atual)
+=== q_Last_Interval
+Último Intervalo
+=== q_Last_Duration
+Última duração
+=== q_Step
+Etapa

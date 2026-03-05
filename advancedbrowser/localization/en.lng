@@ -229,3 +229,9 @@ Edit field
 Update (will change the current row)
 === q_Apply_search_will_remember_the_current_line
 Apply search (will remember the current line)
+=== q_Last_Interval
+Last Interval
+=== q_Last_Duration
+Last Duration
+=== q_Step
+Step

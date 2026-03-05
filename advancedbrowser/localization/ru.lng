@@ -229,3 +229,9 @@ USN карточки
 Обновить (изменит текущую строку)
 === q_Apply_search_will_remember_the_current_line
 Применить поиск (запомнит текущую строку)
+=== q_Last_Interval
+Посл. интервал
+=== q_Last_Duration
+Посл. длительность
+=== q_Step
+Шаг
