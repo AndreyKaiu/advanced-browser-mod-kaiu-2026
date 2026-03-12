@@ -105,6 +105,8 @@ I don't get notified of your reviews, and properly troubleshooting an issue thro
 
 
 #### VERSIONS
+- 3.9.7b, date: 2026-03-12. Fixed a bug in the positions of pillars if the user manually changed their positions.
+
 - 3.9.6b, date: 2026-03-05. The "Previous Duration" field has been corrected. Added fields: "Last Duration", "Last Interval", "Step".
   
 - 3.9.5b, date: 2026-02-27. Fixed font display in the column list window in dark mode. Added a button to display card information, a dedicated hotkey, and an option to always show the window on top.
