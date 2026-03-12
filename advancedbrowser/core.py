@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 3.9.5b
+# Version: 3.9.7b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -495,22 +495,42 @@ class EnhancedColumnOrderDialog(QDialog):
         
         # 2. Create a mapping type -> Column object
         # (now we use type as primary key)
-        type_to_column = {key: column for key, column in all_columns.items()}
+        type_to_column = {key: column for key, column in all_columns.items()}        
         
+        if not hasattr(self, 'original_order2') or not self.original_order2:
+            self.original_order2 = [col_data.copy() for col_data in self.original_order]
+
+        # print("self.original_order=", self.original_order)
+
+        # If there are changed positions, we use exchanges
+        if hasattr(self, 'changed_column_positions') and self.changed_column_positions:
+            # print(f"\nself.changed_column_positions: {self.changed_column_positions}")  
+            # print(f"Applying {len(self.changed_column_positions)} column position changes")
+            
+            for change in self.changed_column_positions:
+                visual_pos = change['visual_pos']
+                logical_index = change['logical_index']
+                # Checking that positions exist in the current list
+                if visual_pos < len(self.original_order2) and logical_index < len(self.original_order2):                    
+                    self.original_order2[logical_index]['type'] = self.original_order[visual_pos]['type']
+
+        print("self.original_order2=", self.original_order2)
+
         # 3. Collecting types from saved data
         saved_types = []
-        for col_data in self.original_order:
+        for col_data in self.original_order2:
             col_type = col_data.get('type')
             if col_type and col_type not in saved_types:
                 saved_types.append(col_type)
                 # print(f"  Saved type: '{col_type}' -> '{col_data.get('name')}'")
         
         if not saved_types:
-            # print("Could not find types in the saved data")
+            print("Could not find types in the saved data")
             # Let's try a simple method
             return self.apply_columns_to_browser()
         
-        # print(f"\nTypes to apply: {saved_types}")
+        
+        # print(f"\nTypes to apply: {saved_types}")                
         
         # 4. We get the current active columns (by type)
         current_types = model._state.active_columns if hasattr(model._state, 'active_columns') else []
@@ -567,6 +587,7 @@ class EnhancedColumnOrderDialog(QDialog):
         
         # print("Columns successfully applied with types!")
 
+   
    
 
     def _apply_column_widths_with_types(self, type_to_column):
@@ -1135,9 +1156,54 @@ class EnhancedColumnOrderDialog(QDialog):
    
 
 
+    # def get_columns_from_table(self):
+    #     """Gets columns from a table, preserving the type."""
+    #     columns = []
+        
+    #     if not hasattr(self.browser.table, '_view'):
+    #         return columns
+        
+    #     view = self.browser.table._view
+    #     model = self.browser.table._model
+    #     header = view.horizontalHeader()
+        
+    #     for visual_pos in range(header.count()):
+    #         logical_index = header.logicalIndex(visual_pos)
+            
+    #         if logical_index >= model.len_columns():
+    #             continue
+            
+    #         # Getting information about a column from the model
+    #         column = model.column_at_section(visual_pos)
+            
+    #         # The column key (type) is the most important!
+    #         column_key = None
+            
+    #         # We try to get it in different ways
+    #         if hasattr(column, 'key'):
+    #             column_key = column.key
+    #         elif hasattr(model._state, 'active_columns') and visual_pos < len(model._state.active_columns):
+    #             column_key = model._state.active_columns[visual_pos]
+            
+    #         # Display name
+    #         header_text = model.headerData(visual_pos, Qt.Orientation.Horizontal, Qt.ItemDataRole.DisplayRole)
+            
+    #         if column_key and header_text:
+    #             columns.append({
+    #                 'type': column_key,                     # Column key (most important!)
+    #                 'logical_index': logical_index,         # Logical index
+    #                 'visual_index': visual_pos,             # Visual position
+    #                 'name': str(header_text),               # Display name
+    #                 'width': view.columnWidth(logical_index)
+    #             })
+        
+    #     return columns
+
+
     def get_columns_from_table(self):
-        """Gets columns from a table, preserving the type."""
+        """Gets columns from a table, preserving the type and tracking changed positions."""
         columns = []
+        self.changed_column_positions = []  # List for storing changed positions
         
         if not hasattr(self.browser.table, '_view'):
             return columns
@@ -1152,27 +1218,32 @@ class EnhancedColumnOrderDialog(QDialog):
             if logical_index >= model.len_columns():
                 continue
             
-            # Getting information about a column from the model
-            column = model.column_at_section(visual_pos)
+            # Use logical_index to get the column
+            column = model.column_at_section(logical_index)
             
-            # The column key (type) is the most important!
+            # Getting the column key
             column_key = None
-            
-            # We try to get it in different ways
             if hasattr(column, 'key'):
                 column_key = column.key
-            elif hasattr(model._state, 'active_columns') and visual_pos < len(model._state.active_columns):
-                column_key = model._state.active_columns[visual_pos]
+            elif hasattr(model._state, 'active_columns') and logical_index < len(model._state.active_columns):
+                column_key = model._state.active_columns[logical_index]
             
-            # Display name
-            header_text = model.headerData(visual_pos, Qt.Orientation.Horizontal, Qt.ItemDataRole.DisplayRole)
+            # Getting the display name
+            header_text = model.headerData(logical_index, Qt.Orientation.Horizontal, Qt.ItemDataRole.DisplayRole)
             
             if column_key and header_text:
+                # If logical_index is not equal to visual_pos, this is the modified position
+                if logical_index != visual_pos:                    
+                    self.changed_column_positions.append({
+                        'visual_pos': visual_pos,
+                        'logical_index': logical_index                        
+                    })                                                
+                
                 columns.append({
-                    'type': column_key,                     # Column key (most important!)
-                    'logical_index': logical_index,         # Logical index
-                    'visual_index': visual_pos,             # Visual position
-                    'name': str(header_text),               # Display name
+                    'type': column_key,
+                    'logical_index': logical_index,
+                    'visual_index': visual_pos,
+                    'name': str(header_text),
                     'width': view.columnWidth(logical_index)
                 })
         
