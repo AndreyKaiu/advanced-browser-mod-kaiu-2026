@@ -105,6 +105,8 @@ I don't get notified of your reviews, and properly troubleshooting an issue thro
 
 
 #### VERSIONS
+- 3.9.7b, date: 2026-05-13. Fixed a bug in displaying button names in newer versions of QT.
+
 - 3.9.7b, date: 2026-03-12. Fixed an error in the position of columns that occurred when the user manually changed their position.
 
 - 3.9.6b, date: 2026-03-05. The "Previous Duration" field has been corrected. Added fields: "Last Duration", "Last Interval", "Step".
