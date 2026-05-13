@@ -1131,6 +1131,22 @@ class EnhancedColumnOrderDialog(QDialog):
         btn = QPushButton(text)
         btn.setToolTip(tooltip)
         btn.setFixedSize(60, 30)
+        btn.setStyleSheet("""   
+         QPushButton {                            
+               /*background: rgba(80, 80, 80, 0.5);*/
+               /*color: #aaa;*/
+               /*font-size: 11px;*/
+               padding: 0px;
+               left: 0px;
+               right: 0px;
+               top: 0px;
+               bottom: 0px;
+               margin: 0px;
+               text-align: center;
+               font-family: "Segoe UI Emoji";
+               /*background-color: transparent;*/
+         }
+         """)
         return btn
     
     def connect_buttons(self):
