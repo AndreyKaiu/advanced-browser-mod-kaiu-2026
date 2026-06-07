@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 3.9.7b
+# Version: 3.9.8b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -82,7 +82,8 @@ def on_fetch_row(card_id, is_note, row, columns):
     row.is_marked = note.has_tag("marked")
     row.is_suspended = card.queue == QUEUE_TYPE_SUSPENDED
     row.is_buried = card.queue in (QUEUE_TYPE_MANUALLY_BURIED, QUEUE_TYPE_SIBLING_BURIED)
-    row.flag = card.userFlag()
+    # row.flag = card.userFlag() # outdated
+    row.flag = card.user_flag()
 gui_hooks.browser_did_fetch_row.append(on_fetch_row)
 
 
@@ -163,10 +164,23 @@ def patched__originalStatusDelegate__init__(self, browser: aqt.browser.Browser, 
         self._browser = browser
 StatusDelegate.__init__ = patched__originalStatusDelegate__init__         
 
+
+BLUE_PEN = QPen(QColor("blue"))
+BLUE_PEN.setWidth(1)
+
+BLUE_PEN_CURRENT = QPen(QColor("blue"))
+BLUE_PEN_CURRENT.setWidth(2)
+
+patched_paint_index = None
+patched_paint_row = None
+
+
 _original_paint = StatusDelegate.paint 
 def patched_paint(self, painter, option, index):
+    global BLUE_PEN, BLUE_PEN_CURRENT  
     rect = option.rect
-    row = self._model.get_row(index)         
+    row = self._model.get_row(index)
+
     is_marked = getattr(row, "is_marked", False)
     is_suspended = getattr(row, "is_suspended", False)
     is_buried = getattr(row, "is_buried", False)
@@ -182,7 +196,8 @@ def patched_paint(self, painter, option, index):
     if self._model.get_cell(index).is_rtl:
         option.direction = Qt.LayoutDirection.RightToLeft    
     
-    if row_color := self._model.get_row(index).color:        
+    # if row_color := self._model.get_row(index).color:        
+    if row_color := row.color:
         assert painter
         painter.save()
         
@@ -239,7 +254,7 @@ def patched_paint(self, painter, option, index):
 
         if not (is_suspended or is_buried) and not is_marked and not (usfl > 0):
             color = theme_manager.qcolor(row_color)
-            painter.fillRect(rect, QBrush(color))
+            painter.fillRect(rect, QBrush(color))            
 
             
         painter.restore()
@@ -261,31 +276,22 @@ def patched_paint(self, painter, option, index):
     if issel:
         # draw a frame
         painter.save()
-        pen = QPen(QColor("blue"))
-        pen.setWidth(1)
+        # pen = QPen(QColor("blue"))
+        # pen.setWidth(1)
+        pen = BLUE_PEN
 
         # Checking whether this cell is the current one in the table      
         browser_table = self._browser.table              
-        if browser_table:
-            # Get the currently selected cell
-            current_index = browser_table._view.currentIndex()
-            # print("current_index=", current_index)
-            
-            # Compare with the cell being drawn
-            is_current = (current_index.isValid() and 
-                        current_index.row() == index.row() and 
-                        current_index.column() == index.column())
-            
+        if browser_table:            
             # We get the selection model
             selection_model = browser_table._view.selectionModel()
-            if selection_model:
-                # Checking if a cell is selected
-                is_selected = selection_model.isSelected(index)                
+            if selection_model:                              
                 # Checking whether the cell is active (has focus)
                 has_focus = selection_model.currentIndex() == index                
                 if has_focus:
-                    pen = QPen(QColor("blue")) 
-                    pen.setWidth(2)
+                    # pen = QPen(QColor("blue")) 
+                    # pen.setWidth(2)
+                    pen = BLUE_PEN_CURRENT
        
         
         painter.setPen(pen)
@@ -2102,6 +2108,32 @@ def create_toolbar_for_left_panel(browser: Browser):
                 browser.raise_()
 
 
+    def show_sel_notes(browser: Browser):
+        if browser.table.len_selection(True) > 1: 
+            browser.selectNotes()                
+
+            def sel1_card(browser: Browser):
+                # browser.table.clear_selection()
+                # browser.table.to_first_row()
+                browser.table._reset_selection()        
+                try:
+                    assert browser.table._view is not None
+                    browser.table._view.selectRow(0)
+                    browser.table._scroll_to_row(0, True) # scroll_even_if_visible)
+                    QTimer.singleShot(100, lambda: browser.onTogglePreview())
+                    
+                except Exception as e:
+                    browser.table.browser.on_all_or_selected_rows_changed()
+                    browser.table.browser.on_current_row_changed()
+
+            QTimer.singleShot(500, lambda: sel1_card(browser))
+        else:
+            QTimer.singleShot(100, lambda: browser.onTogglePreview())
+
+        
+
+
+
     def run_find_tbl(browser: Browser):
         try:
             show_wait_cursor()
@@ -2160,6 +2192,11 @@ def create_toolbar_for_left_panel(browser: Browser):
     btn_card_info.clicked.connect(lambda: show_hide_card_info(browser))
     btn_card_info.setShortcut(QKeySequence("Shift+F1"))
     layout.addWidget(btn_card_info)
+
+    btn_show_sel_notes = btn_create(text="👁️", tooltip=tr.qt_accel_select_notes().replace("&", "") + " + " + tr.actions_preview() + " [Shift+F2]", style_sheet=style_btn_right)    
+    btn_show_sel_notes.clicked.connect(lambda: show_sel_notes(browser))
+    btn_show_sel_notes.setShortcut(QKeySequence("Shift+F2"))
+    layout.addWidget(btn_show_sel_notes)
     
     # Stretch to the right
     layout.addStretch()
@@ -2170,7 +2207,7 @@ def create_toolbar_for_left_panel(browser: Browser):
 
     # Bottom line with label
     label_request_panel = QFrame()
-    label_request_panel.setObjectName("label_request_panel")
+    label_request_panel.setObjectName("label_request_panel")    
     
     label_request_layout = QHBoxLayout(label_request_panel)
     label_request_layout.setContentsMargins(5, 2, 5, 2)
@@ -2178,6 +2215,17 @@ def create_toolbar_for_left_panel(browser: Browser):
     # Creating a label with the ability to highlight text
     label_request = QLabel("deck:*")
     label_request.setObjectName("label_request")
+    label_request.setWordWrap(True)
+    label_request.setMinimumWidth(0)
+    label_request.setSizePolicy(
+        QSizePolicy.Policy.Ignored,
+        QSizePolicy.Policy.Preferred
+    )
+
+    label_request_panel.setSizePolicy(
+        QSizePolicy.Policy.Expanding,
+        QSizePolicy.Policy.Fixed
+    )
     
     # Making text stand out
     label_request.setTextInteractionFlags(
@@ -2188,7 +2236,7 @@ def create_toolbar_for_left_panel(browser: Browser):
 
     label_request_layout.addWidget(label_request)
     main_layout.addWidget(label_request_panel)
-
+    
     return main_widget
 
 

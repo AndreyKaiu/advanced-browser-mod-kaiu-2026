@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 3.9.7b
+# Version: 3.9.8b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -14,6 +14,7 @@ from .core import AdvancedBrowser
 import anki.lang
 import re
 from aqt import mw
+from aqt.qt import QFontMetrics
 from .localization.lang import set_lang
 from aqt.utils import (showText, showInfo, tooltip) 
 from .config import getCardInfoDialogAlwaysOnTop
@@ -335,8 +336,24 @@ def patched_search(self, txt: str) -> None:
     try:
         if txt == "":
             txt = "deck:*"
+        txt2 = txt
         if hasattr(self.browser, '_label_request') and self.browser._label_request:
-            self.browser._label_request.setText(txt)
+            label = self.browser._label_request
+
+            metrics = QFontMetrics(label.font())
+
+            if metrics.horizontalAdvance(txt) > label.width():
+
+                visible_chars = max(10, int(len(txt) * label.width() /
+                                            metrics.horizontalAdvance(txt)))
+
+                start_len = int(visible_chars * 0.45)
+                end_len = int(visible_chars * 0.50)
+
+                txt2 = f"{txt[:start_len]} ... {txt[-end_len:]}"
+
+            label.setText(txt2)
+
     except:
         pass
 

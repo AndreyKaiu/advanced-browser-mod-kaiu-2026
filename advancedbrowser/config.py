@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+# Version: 3.9.8b
+# See github page to report issues or to contribute:
+# https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
+#
+# Original author code:
+# https://github.com/hssm/advanced-browser
 import aqt
 from anki.hooks import addHook, remHook
 from aqt import mw
@@ -10,10 +17,9 @@ userOption = None
 
 def getUserOption():
     global userOption
-    # if userOption is None:
-    #     userOption = aqt.mw.addonManager.getConfig(__name__)
-    # return userOption
-    return aqt.mw.addonManager.getConfig(__name__) 
+    if userOption is None:
+        userOption = aqt.mw.addonManager.getConfig(__name__)
+    return userOption
 
 
 def getCardInfoDialogAlwaysOnTop():
