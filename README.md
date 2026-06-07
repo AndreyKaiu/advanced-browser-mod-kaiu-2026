@@ -97,7 +97,7 @@ The "Previous Duration" field has been corrected. Since there were "Previous Dur
 
 The "Step" field has been added. This field shows how many successful learning steps you've completed. If you can view "Reviews" from the card statistics, it will only be equal to the "Step" field if you've never clicked "Again." A "Step" of 7 typically indicates strong memorization, especially if the last interval was more than 14 days apart.
 
-**Added since version 3.9.6b, date: 2026-03-05**
+**Added since version 3.9.8b, date: 2026-06-07**
 
 A bug that caused a long time to select more than 20 records has been fixed. It was accidentally left behind in version 3.9.5b during testing. Now, selecting 1,000 cards doesn't take as long, about a couple of seconds, but selecting 16,000 cards takes a long time, requiring about 10 seconds. If possible, avoid selecting such a large number of cards; instead, limit your search to a single deck or a query that reduces the number of cards to 1,000.
 
