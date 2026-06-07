@@ -97,6 +97,13 @@ The "Previous Duration" field has been corrected. Since there were "Previous Dur
 
 The "Step" field has been added. This field shows how many successful learning steps you've completed. If you can view "Reviews" from the card statistics, it will only be equal to the "Step" field if you've never clicked "Again." A "Step" of 7 typically indicates strong memorization, especially if the last interval was more than 14 days apart.
 
+**Added since version 3.9.6b, date: 2026-03-05**
+
+A bug that caused a long time to select more than 20 records has been fixed. It was accidentally left behind in version 3.9.5b during testing. Now, selecting 1,000 cards doesn't take as long, about a couple of seconds, but selecting 16,000 cards takes a long time, requiring about 10 seconds. If possible, avoid selecting such a large number of cards; instead, limit your search to a single deck or a query that reduces the number of cards to 1,000.
+
+A button has been added for selecting and then viewing selected cards (notes). After selecting, you can go back and forth through the history. If only one note is selected, the button will function as a regular view button (the one activated by Ctrl+Shift+P, while this one will be activated by Shift+F2). This button is used for convenience when using the small-group memory method: selecting 3, 5, 7 (the optimal number—I recommend it), 10, 15, or 20 cards and viewing them 2-3 times in order as is, and then recalling them 2-3 more times with random card selection enabled (using the ["Preview Slideshow" add-on](https://ankiweb.net/shared/info/1188253433) ). If you want to be sure to view all cards, close the viewing window and reopen it. Then, the first time, it selects exactly all N cards in N selections. Once you're confident you've memorized these 7-10 words, move on to other words (word group 2). If a word feels particularly difficult, you can mark it with a red flag for later, separately. Once you've reviewed 5 groups of 7-10 words in this manner, quickly review all the cards again, starting with group 1. This way, you'll complete one review, then another review before bed, then the next morning. It's quite possible to learn 35-50 cards in a day. But not every day! One day for new words, another for reviewing the previous day's new words, and then review all the other cards. In a month, it's possible to learn 525-750 sentences (new words within sentences) using your own card sorting system or your own specific order of studying the cards. But in this case, you alone will be responsible for monitoring the intervals of studying the cards and assessing their difficulty (for example, using three different colored flags).
+
+
 #### HELP AND SUPPORT
 
 **Please do not use reviews for bug reports or support requests.**<br>
@@ -105,6 +112,8 @@ I don't get notified of your reviews, and properly troubleshooting an issue thro
 
 
 #### VERSIONS
+- 3.9.8b, date: 2026-06-07. Fixed a slow card selection issue. Added a button to view selected cards.
+
 - 3.9.7b, date: 2026-05-13. Fixed a bug in displaying button names in newer versions of QT.
 
 - 3.9.7b, date: 2026-03-12. Fixed an error in the position of columns that occurred when the user manually changed their position.
