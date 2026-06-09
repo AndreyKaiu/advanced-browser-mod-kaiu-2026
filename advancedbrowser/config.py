@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 3.9.8b
+# Version: 3.9.9b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -33,6 +33,8 @@ def getEachFieldInSingleList():
 def getUseInternalFields():
     return getUserOption().get("Show internal fields", False)
 
+def getShowNoteCounts():
+    return getUserOption().get("Show note counts", False)
 
 def getNoteModeShortcut():
     return getUserOption().get("Keyboard shortcut for note browser mode", "Ctrl+Alt+N")

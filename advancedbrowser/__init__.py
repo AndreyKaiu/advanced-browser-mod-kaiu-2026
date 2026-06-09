@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 3.9.8b
+# Version: 3.9.9b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -18,6 +18,7 @@ from aqt.qt import QFontMetrics
 from .localization.lang import set_lang
 from aqt.utils import (showText, showInfo, tooltip) 
 from .config import getCardInfoDialogAlwaysOnTop
+from .config import getShowNoteCounts
 
 from .localization.lang import q
 
@@ -899,7 +900,115 @@ def setup_double_click_handler(self):
 Browser.setup_double_click_handler = setup_double_click_handler
 
 
+# ========== ⬇⬇⬇⬇⬇ show note counts ⬇⬇⬇⬇⬇ ==========
+from aqt import gui_hooks
+from aqt.browser.sidebar.item import SidebarItemType
+
+class SidebarCounterDelegate(QStyledItemDelegate):
+    def __init__(self, parent=None, browser=None):
+        super().__init__(parent)
+        self.tree_view = parent
+        self.browser = browser
+        self.cache = {}
+        
+        # Figure space - space as wide as a number (U+2007)
+        self.figure_space = "\u2007"
+        
+    def get_card_count(self, item):
+        if item.item_type in (
+            SidebarItemType.ROOT, SidebarItemType.SAVED_SEARCH_ROOT,
+            SidebarItemType.TODAY_ROOT, SidebarItemType.FLAG_ROOT,
+            SidebarItemType.CARD_STATE_ROOT, SidebarItemType.DECK_ROOT,
+            SidebarItemType.NOTETYPE_ROOT, SidebarItemType.TAG_ROOT
+        ):
+            return None
+            
+        if not item.search_node:
+            return None
+            
+        item_id = id(item)
+        if item_id in self.cache:
+            return self.cache[item_id]
+            
+        try:
+            search_string = self.browser.mw.col.build_search_string(item.search_node)
+            count = len(self.browser.mw.col.find_cards(search_string))
+            self.cache[item_id] = count
+            return count
+        except:
+            return None
+    
+    def format_with_fixed_width(self, count):
+        """Format number with figure spaces for alignment"""
+        if count is None:
+            # 5 figure spaces + hash + space
+            return f"{self.figure_space * 5}# "
+        
+        # Convert to string with leading zeros
+        num_str = f"{count:05d}"
+        # Replace zeros with figure spaces (except last digit? No, keep zeros as digits)
+        # Actually we want digits for numbers, figure spaces only for alignment before #
+        return f"{num_str}# "
+    
+    def paint(self, painter, option, index):
+        item = self.tree_view.model().item_for_index(index)
+        if not item:
+            super().paint(painter, option, index)
+            return
+        
+        count = self.get_card_count(item)
+        original_name = item.name        
+        
+        if count is not None:
+            if getShowNoteCounts():
+                # Format with a fixed width
+                if count == 0:
+                    # For zero: 5 figure spaces + "# "
+                    # prefix = f"{self.figure_space * 5}# "
+                    prefix = f"{self.figure_space * 4}0# "
+                else:
+                    # For numbers: the number itself + ". "
+                    # Adding figure spaces to the desired width
+                    num_str = str(count)
+                    spaces_needed = 5 - len(num_str)
+                    prefix = f"{self.figure_space * spaces_needed}{num_str}# "
+                
+                item.name = f"{prefix}{original_name}"
+            else:
+                item.name = original_name
+        else:
+            item.name = original_name
+        
+        super().paint(painter, option, index)
+        item.name = original_name
 
 
+class SidebarCounter:
+    def __init__(self):
+        # print("Sidebar Counter: Loading...")
+        gui_hooks.browser_will_show.append(self.on_browser_show)
+        gui_hooks.browser_did_search.append(self.on_browser_search)
+        self.delegate = None
+        
+    def on_browser_show(self, browser):
+        QTimer.singleShot(500, lambda: self.setup_delegate(browser))
+        
+    def on_browser_search(self, browser, search_text=None):
+        if self.delegate:
+            self.delegate.cache.clear()
+            if hasattr(browser, 'sidebar'):
+                browser.sidebar.update()
+        
+    def setup_delegate(self, browser):
+        if not hasattr(browser, 'sidebar'):
+            QTimer.singleShot(500, lambda: self.setup_delegate(browser))
+            return
+            
+        tree_view = browser.sidebar
+        self.delegate = SidebarCounterDelegate(tree_view, browser)
+        tree_view.setItemDelegate(self.delegate)        
 
+counter = SidebarCounter()
+
+# ========== ⬆⬆⬆⬆⬆ show note counts ⬆⬆⬆⬆⬆ ==========
 
