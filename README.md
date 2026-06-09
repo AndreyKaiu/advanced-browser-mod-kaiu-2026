@@ -112,6 +112,8 @@ I don't get notified of your reviews, and properly troubleshooting an issue thro
 
 
 #### VERSIONS
+- 3.9.9b, date: 2026-06-09. Added "Show note counts" option. Show the number of notes (cards and any elements) in the left sidebar.
+- 
 - 3.9.8b, date: 2026-06-07. Fixed a slow card selection issue. Added a button to view selected cards.
 
 - 3.9.7b, date: 2026-05-13. Fixed a bug in displaying button names in newer versions of QT.
