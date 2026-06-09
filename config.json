@@ -3,5 +3,6 @@
     "Column alignment": "Start",
     "Language": "",
     "Show internal fields": false,
-    "Table content": "No interaction"    
+    "Show note counts": false,
+    "Table content": "No interaction"
 }
