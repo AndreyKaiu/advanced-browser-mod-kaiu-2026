@@ -120,7 +120,7 @@ I don't get notified of your reviews, and properly troubleshooting an issue thro
 
 
 #### VERSIONS
-- 4.0.0b, date: 2026-06-22. The current row number in the table (and percentage of the total) will now be shown in the window title.
+- 4.0.0b, date: 2026-06-23. The current row number in the table (and percentage of the total) will now be shown in the window title.
 
 - 3.9.9b, date: 2026-06-09. Added "Show note counts" option. Show the number of notes (cards and any elements) in the left sidebar.
  
