@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 3.9.8b
+# Version: 4.0.0b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -1744,7 +1744,26 @@ def create_toolbar_for_left_panel(browser: Browser):
     toolbar.setFixedHeight(btn_size+2)
     layout = QHBoxLayout(toolbar)
     layout.setContentsMargins(1, 1, 1, 1)
-    layout.setSpacing(10)
+    layout.setSpacing(5)
+    
+    toolbar.setMinimumWidth(150)
+    
+    toolbar2 = QFrame()
+    toolbar2.setMinimumWidth(150)
+    
+    # toolbar.setSizePolicy(
+    #     QSizePolicy.Policy.Ignored,
+    #     QSizePolicy.Policy.Fixed
+    # )
+    toolbar2.setSizePolicy(
+        QSizePolicy.Policy.Minimum,
+        QSizePolicy.Policy.Fixed
+    )
+    
+    layout2 = QHBoxLayout(toolbar2)
+    layout2.setContentsMargins(1, 1, 1, 1)
+    layout2.setSpacing(5)
+    
     
     
     style_btn_left = """   
@@ -1802,9 +1821,11 @@ def create_toolbar_for_left_panel(browser: Browser):
     btn_toggle_sidebar.clicked.connect(lambda: browser.toggle_sidebar())
     layout.addWidget(btn_toggle_sidebar)
 # Switch LEFT
-    switch = browser._switch
-    switch.setParent(toolbar)    
-    layout.addWidget(switch)      
+    # switch = browser._switch
+    # switch.setParent(toolbar)    
+    # layout.addWidget(switch)      
+    
+    layout.addWidget(toolbar2)
 
 
 
@@ -2153,50 +2174,50 @@ def create_toolbar_for_left_panel(browser: Browser):
 
 
     # Buttons to the right of the Switch
-    btn_back = btn_create(text="←", tooltip=q("q_Back") + " [Alt+Left]", style_sheet=style_btn_right)    
+    btn_back = btn_create(text="←", tooltip=q("q_Back") + " [Alt+Left]", style_sheet=style_btn_left)    
     btn_back.clicked.connect(lambda: go_back(browser))
     btn_back.setShortcut(QKeySequence("Alt+Left"))
     btn_back.setEnabled(False)
-    layout.addWidget(btn_back)
+    layout2.addWidget(btn_back)
     browser._btn_back = btn_back
 
-    btn_forward = btn_create(text="→", tooltip=q("q_Forward") + " [Alt+Right]", style_sheet=style_btn_right)    
+    btn_forward = btn_create(text="→", tooltip=q("q_Forward") + " [Alt+Right]", style_sheet=style_btn_left)    
     btn_forward.clicked.connect(lambda: go_forward(browser))
     btn_forward.setShortcut(QKeySequence("Alt+Right"))
     btn_forward.setEnabled(False)
-    layout.addWidget(btn_forward)
+    layout2.addWidget(btn_forward)
     browser._btn_forward = btn_forward
     browser._all_history_n = 0
 
     btn_edit_field = btn_create(text="✏️", tooltip=q("q_Edit_field") + " [F2]", style_sheet=style_btn_right)    
     btn_edit_field.clicked.connect(lambda: go_edit_field(browser))
     btn_edit_field.setShortcut(QKeySequence("F2"))
-    layout.addWidget(btn_edit_field)       
+    layout2.addWidget(btn_edit_field)       
 
     btn_reorder_columns = btn_create(text="⮂", tooltip=q("q_Column_order") + " [F10]", style_sheet=style_btn_right)    
     btn_reorder_columns.clicked.connect(lambda: show_reorder_columns(browser))
     btn_reorder_columns.setShortcut(QKeySequence("F10"))
-    layout.addWidget(btn_reorder_columns)
+    layout2.addWidget(btn_reorder_columns)
 
     btn_refresh_tbl = btn_create(text="↻", tooltip=q("q_Update_will_change_the_current_row") + " [Shift+F9]", style_sheet=style_btn_right)    
     btn_refresh_tbl.clicked.connect(lambda: table_reset(browser))
     btn_refresh_tbl.setShortcut(QKeySequence("Shift+F9"))
-    layout.addWidget(btn_refresh_tbl) 
+    layout2.addWidget(btn_refresh_tbl) 
 
     btn_run_find_tbl = btn_create(text="🔍", tooltip=q("q_Apply_search_will_remember_the_current_line") + " [F9]", style_sheet=style_btn_right)    
     btn_run_find_tbl.clicked.connect(lambda: run_find_tbl(browser))
     btn_run_find_tbl.setShortcut(QKeySequence("F9"))
-    layout.addWidget(btn_run_find_tbl)
+    layout2.addWidget(btn_run_find_tbl)
 
     btn_card_info = btn_create(text="ⓘ", tooltip=tr.actions_card_info() + " [Shift+F1]", style_sheet=style_btn_right)    
     btn_card_info.clicked.connect(lambda: show_hide_card_info(browser))
     btn_card_info.setShortcut(QKeySequence("Shift+F1"))
-    layout.addWidget(btn_card_info)
+    layout2.addWidget(btn_card_info)
 
     btn_show_sel_notes = btn_create(text="👁️", tooltip=tr.qt_accel_select_notes().replace("&", "") + " + " + tr.actions_preview() + " [Shift+F2]", style_sheet=style_btn_right)    
     btn_show_sel_notes.clicked.connect(lambda: show_sel_notes(browser))
     btn_show_sel_notes.setShortcut(QKeySequence("Shift+F2"))
-    layout.addWidget(btn_show_sel_notes)
+    layout2.addWidget(btn_show_sel_notes)
     
     # Stretch to the right
     layout.addStretch()

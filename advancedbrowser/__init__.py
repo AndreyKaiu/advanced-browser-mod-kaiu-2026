@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 3.9.9b
+# Version: 4.0.0b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -351,9 +351,13 @@ def patched_search(self, txt: str) -> None:
                 start_len = int(visible_chars * 0.45)
                 end_len = int(visible_chars * 0.50)
 
-                txt2 = f"{txt[:start_len]} ... {txt[-end_len:]}"
+                txt2 = f"{txt[:start_len]}...{txt[-end_len:]}"
+                label.setToolTip(txt)
+            else:
+                label.setToolTip("")
 
             label.setText(txt2)
+            
 
     except:
         pass
@@ -1011,4 +1015,38 @@ class SidebarCounter:
 counter = SidebarCounter()
 
 # ========== ⬆⬆⬆⬆⬆ show note counts ⬆⬆⬆⬆⬆ ==========
+
+
+# ========== ⬇⬇⬇⬇⬇ Current line number ⬇⬇⬇⬇⬇ ==========
+original_update_title = Browser.updateTitle
+
+def patched_update_title(self):
+    """Enhanced updateTitle with row number"""    
+    original_update_title(self)
+    
+    if hasattr(self, 'table'):
+        cur = self.table.len()
+        if cur > 0:
+            current_index = self.table._current() # OR self.table._selection_model().currentIndex()
+            row_number = 1
+            if current_index.isValid():
+                row_number = current_index.row() + 1
+            
+            current_title = self.windowTitle()            
+            if ', n=' in current_title:
+                current_title = current_title.split(', n=')[0]
+            row_pr = round((row_number / cur) * 100)
+            self.setWindowTitle(f"{current_title}, n={row_number} ({row_pr}%)")
+
+        else:
+            current_title = self.windowTitle()
+            if ', n=' in current_title:
+                current_title = current_title.split(', n=')[0]
+            
+
+Browser.updateTitle = patched_update_title
+
+# ========== ⬆⬆⬆⬆⬆ Current line number ⬆⬆⬆⬆⬆ ==========
+
+
 
