@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 4.0.0b
+# Version: 4.0.1b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -18,7 +18,7 @@ from aqt.qt import QTimer
 addon_dir = mw.addonManager.addonFromModule(__name__)
 meta = mw.addonManager.addonMeta(addon_dir)
 addon_name = meta.get("name", "???")
-human_version = meta.get("human_version", "4.0.0b")
+human_version = meta.get("human_version", "4.0.1b")
 version_addon = "Version: " + human_version
 
 msgHTML = """
@@ -60,7 +60,7 @@ def show_update_once():
     if update_Addon == '':        
         if mw.pm.profile is not None:
             mw.pm.profile[update_Addon_Key] = 'True'
-        showText_version_addon()
+        # showText_version_addon() # REMOVE COMMENT IF IMPORTANT UPDATE
     
 # shows after 2 seconds so that the profile has time to load    
 QTimer.singleShot(2000, show_update_once)
