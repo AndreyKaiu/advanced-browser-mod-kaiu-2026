@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 4.0.0b
+# Version: 4.0.1b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -2131,7 +2131,15 @@ def create_toolbar_for_left_panel(browser: Browser):
 
     def show_sel_notes(browser: Browser):
         if browser.table.len_selection(True) > 1: 
-            browser.selectNotes()                
+            if browser.table.is_notes_mode():
+                browser.selectNotes()
+            else:
+                cids = browser.selected_cards()
+                browser.table.clear_selection()
+                browser.search_for(
+                    "cid:" + ",".join(str(cid) for cid in cids)
+                )
+                browser.table.select_all()              
 
             def sel1_card(browser: Browser):
                 # browser.table.clear_selection()
@@ -2214,7 +2222,7 @@ def create_toolbar_for_left_panel(browser: Browser):
     btn_card_info.setShortcut(QKeySequence("Shift+F1"))
     layout2.addWidget(btn_card_info)
 
-    btn_show_sel_notes = btn_create(text="👁️", tooltip=tr.qt_accel_select_notes().replace("&", "") + " + " + tr.actions_preview() + " [Shift+F2]", style_sheet=style_btn_right)    
+    btn_show_sel_notes = btn_create(text="👁️", tooltip=tr.qt_accel_select_notes().replace("&", "") + " (" + tr.browsing_cards() + ") + " + tr.actions_preview() + " [Shift+F2]", style_sheet=style_btn_right)    
     btn_show_sel_notes.clicked.connect(lambda: show_sel_notes(browser))
     btn_show_sel_notes.setShortcut(QKeySequence("Shift+F2"))
     layout2.addWidget(btn_show_sel_notes)
