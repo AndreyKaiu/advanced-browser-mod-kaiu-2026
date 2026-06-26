@@ -120,7 +120,7 @@ I don't get notified of your reviews, and properly troubleshooting an issue thro
 
 
 #### VERSIONS
-- 4.0.1b, date: 2026-06-23. The button to view selected cards will now select cards or notes, depending on what view you currently have in your table.
+- 4.0.1b, date: 2026-06-26. The button to view selected cards will now select cards or notes, depending on what view you currently have in your table.
   
 - 4.0.0b, date: 2026-06-23. The current row number in the table (and percentage of the total) will now be shown in the window title.
 
