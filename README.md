@@ -112,6 +112,11 @@ The current row number in the table (and percentage of the total) will now be sh
 The switcher between cards and notes has been returned to its original state to fit all the buttons into a compact view (users sometimes need a very compact view)
 
 
+**Added since version 4.0.2b, date: 2026-10-29**
+
+Originally, this add-on used the labels "Card" instead of "Card Type" and "Note" instead of "Note Type." I have restored the full names so that they match the column headers used in Anki by default. In the card info properties, the label will now appear as "Card State." I also fixed a bug present in the original version of the add-on: sorting by the "Card Type" column did not work correctly when the note type was "Cloze."
+
+
 #### HELP AND SUPPORT
 
 **Please do not use reviews for bug reports or support requests.**<br>
@@ -120,6 +125,8 @@ I don't get notified of your reviews, and properly troubleshooting an issue thro
 
 
 #### VERSIONS
+- 4.0.2b, date: 2026-10-29. "Card" => "Card Type"; "Note" => "Note Type". Fixed an issue with the "Card Type" field when using a "Cloze" note type.
+  
 - 4.0.1b, date: 2026-06-26. The button to view selected cards will now select cards or notes, depending on what view you currently have in your table.
   
 - 4.0.0b, date: 2026-06-23. The current row number in the table (and percentage of the total) will now be shown in the window title.
