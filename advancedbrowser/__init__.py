@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 4.0.1b
+# Version: 4.0.2b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #

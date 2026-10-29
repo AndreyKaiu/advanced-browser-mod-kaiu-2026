@@ -55,24 +55,60 @@ class BasicFields:
                 c.ord = right_tmpl["ord"]
             c.flush()
             return True
-
+            
+            
         def sortTableFunction():
             col = advBrowser.mw.col
             col.db.execute("drop table if exists tmp")
-            col.db.execute("create temporary table tmp (mid int, ord int, v text, primary key (mid, ord)) without rowid;")
+            col.db.execute("""
+                create temporary table tmp (
+                    mid int,
+                    ord int,
+                    v text,
+                    primary key (mid, ord)
+                ) without rowid
+            """)
 
             for model in col.models.all():
                 templates = model['tmpls']
-                for template in templates:
-                    ord = template['ord']
-                    if model['type'] == MODEL_CLOZE:
-                        name = templates[0]['name'] + f" {ord + 1}"
-                    else:
+
+                if model['type'] == MODEL_CLOZE:
+                    # У Cloze номер ord карточки не совпадает
+                    # с ord единственного шаблона.
+                    tmpl_name = templates[0]['name']
+
+                    ords = col.db.list("""
+                        select distinct c.ord
+                        from cards c
+                        join notes n on n.id = c.nid
+                        where n.mid = ?
+                        order by c.ord
+                    """, model['id'])
+
+                    for ord_num in ords:
+                        name = f"{tmpl_name} {ord_num + 1:08d}"
+
+                        col.db.execute(
+                            "insert into tmp values (?,?,?)",
+                            model['id'],
+                            ord_num,
+                            name
+                        )
+
+                else:
+                    for template in templates:
+                        ord_num = template['ord']
                         name = template['name']
 
-                    advBrowser.mw.col.db.execute(
-                        "insert into tmp values (?,?,?)", model['id'], ord, name
-                    )
+                        col.db.execute(
+                            "insert into tmp values (?,?,?)",
+                            model['id'],
+                            ord_num,
+                            name
+                        )    
+            
+
+        
 
         cc = advBrowser.newCustomColumn(
             type="template",

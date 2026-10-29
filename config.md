@@ -1,4 +1,4 @@
-Version: 4.0.1b. Author of this version: <a href="https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026">https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026</a><br>
+Version: 4.0.2b. Author of this version: <a href="https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026">https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026</a><br>
 Author of the original addon: <a href="https://github.com/AnKing-VIP">https://github.com/AnKing-VIP</a>
 
 <details>
@@ -21,6 +21,28 @@ The configuration options are:<br>
 &nbsp&nbsp&nbsp- <i><b>"No interaction"</b></i>: the table content can't be interacted with. This makes the Advanced Browser behave like the regular Anki browser.<br>
 &nbsp&nbsp&nbsp- <i><b>"Selectable"</b></i>: the table content can be selected. All changes will be ignored. This is useful because this allows you to quickly copy field contents (instead of the regular procedure where you have to do all these steps: select the note, move the mouse to the field, select its content, then copy it).<br>
 &nbsp&nbsp&nbsp- <i><b>"Editable"</b></i>: Allow to edit some values directly in the table. Not all.<br>
+</details>
+---
+<details>
+<summary><b> =DE= Hinweise. Zum Aufklappen klicken</b></summary>
+Die Konfigurationsoptionen sind:<br>
+<br>
+- <b>"Card Info Dialog Always On Top"</b>: Boolescher Wert (d. h. "true" oder "false"). Ermöglicht es, Informationen über die Karte in einem Fenster anzuzeigen, das über dem Fenster liegt, von dem aus es geöffnet wurde.<br>
+<br>
+- <b>"Column alignment"</b>: Eine der folgenden Optionen:<br>
+&nbsp&nbsp&nbsp- <i><b>"Start"</b></i>: Der Text in der Spalte wird linksbündig ausgerichtet (bzw. rechtsbündig bei Schriften, die von rechts nach links geschrieben werden).<br>
+&nbsp&nbsp&nbsp- <i><b>"Center"</b></i>: Der Text in der Spalte wird zentriert ausgerichtet.<br>
+<br>
+- <b>"Language"</b>: Zeichenfolge. Wenn eine leere Zeichenfolge angegeben wird, versucht das Programm, eine Übersetzungsdatei für die in Anki eingestellte Sprache zu finden. Andernfalls geben Sie den Dateinamen ohne Dateiendung an (z. B. "ru" für Russisch). Die Datei muss sich im Ordner des Add-ons befinden. (Beispielpfad zu dieser Datei: "...Anki2\addons21\874215009\advancedbrowser\localization\ru.lng". Sie können den Speicherort dieses Add-ons über Anki öffnen: Werkzeuge -> Add-ons -> Dieses Add-on auswählen -> Auf die Schaltfläche "Dateien anzeigen" klicken -> Das Verzeichnis "advancedbrowser\localization" öffnen.) Wenn Ihre Sprache nicht verfügbar ist, erstellen Sie eine Kopie der Datei "en.lng" mit einem neuen Namen (für Ihre Sprache), öffnen Sie die Datei in einem Texteditor und übersetzen Sie nur den Text zwischen den ===-Blöcken.<br>
+<br>
+- <b>"Show internal fields"</b>: Boolescher Wert (d. h. "true" oder "false"). Aktiviert zusätzliche Spalten, die Datenbankfeldern zu Karten und Notizen entsprechen (Entwickleroption).<br>
+<br>
+- <b>"Show note counts"</b>: Boolescher Wert (d. h. "true" oder "false"). Zeigt die Anzahl der Notizen (Karten und andere Elemente) in der linken Seitenleiste an.<br>
+<br>
+- <b>"Table content"</b>: Eine der folgenden Optionen:<br>
+&nbsp&nbsp&nbsp- <i><b>"No interaction"</b></i>: Der Tabelleninhalt kann nicht interaktiv verwendet werden. Dadurch verhält sich der Advanced Browser wie der normale Anki-Browser.<br>
+&nbsp&nbsp&nbsp- <i><b>"Selectable"</b></i>: Der Tabelleninhalt kann ausgewählt werden. Alle Änderungen werden ignoriert. Dies ist nützlich, da sich Feldinhalte so schnell kopieren lassen (anstatt des üblichen Verfahrens, bei dem Sie zunächst die Notiz auswählen, dann die Maus zum Feld bewegen, dessen Inhalt markieren und anschließend kopieren müssen).<br>
+&nbsp&nbsp&nbsp- <i><b>"Editable"</b></i>: Ermöglicht es, einige Werte direkt in der Tabelle zu bearbeiten. Nicht alle Werte sind bearbeitbar.<br>
 </details>
 ---
 <details>
@@ -67,4 +89,48 @@ As opções de configuração são:<br>
 &nbsp&nbsp&nbsp- <i><b>"Editable"</b></i>: permite editar alguns valores diretamente na tabela. Não todos.<br>
 <br>
 <i><b>(Tradução fornecida por chatgpt.com. Precisão da tradução não verificada)</b></i><br>
+</details>
+---
+<details>
+<summary><b> =ZH-CN= 注释。点击展开</b></summary>
+配置选项如下：<br>
+<br>
+- <b>"Card Info Dialog Always On Top"</b>：布尔值（即 "true" 或 "false"）。允许在一个始终显示在调用它的窗口上方的窗口中显示有关卡片的信息。<br>
+<br>
+- <b>"Column alignment"</b>：以下选项之一：<br>
+&nbsp&nbsp&nbsp- <i><b>"Start"</b></i>：列中的文本左对齐（对于从右向左书写的文字，则右对齐）<br>
+&nbsp&nbsp&nbsp- <i><b>"Center"</b></i>：列中的文本居中对齐<br>
+<br>
+- <b>"Language</b>：字符串。如果指定空字符串，程序将尝试查找与 Anki 所指定语言对应的翻译文件。否则，请指定位于此插件文件夹中的文件名（不带扩展名）（例如，俄语使用 "ru"）。该文件的位置示例："...Anki2\addons21\874215009\advancedbrowser\localization\ru.lng"。你可以通过 Anki 程序打开此插件所在的位置：工具 -> 插件 -> 选择此插件的名称 -> 点击 "查看文件" 按钮 -> 进入 "advancedbrowser\localization" 目录。如果没有你所使用语言的翻译文件，请复制 "en.lng" 文件并使用新名称（对应你的语言）保存，然后用文本编辑器打开该文件，只翻译 === 标记之间的文本。<br>
+<br>
+- <b>"Show internal fields"</b>：布尔值（即 "true" 或 "false"）。启用更多与卡片和笔记相关、对应数据库字段的列（开发者选项）。<br>
+<br>
+- <b>"Show note counts"</b>：布尔值（即 "true" 或 "false"）。在左侧边栏中显示笔记数量（包括卡片及所有元素）。<br>
+<br>
+- <b>"Table content"</b>：以下选项之一：<br>
+&nbsp&nbsp&nbsp- <i><b>"No interaction"</b></i>：无法与表格内容进行交互。这使 Advanced Browser 的行为与 Anki 的常规浏览器相同。<br>
+&nbsp&nbsp&nbsp- <i><b>"Selectable"</b></i>：可以选择表格内容，但所有更改都会被忽略。此选项很有用，因为它允许你快速复制字段内容（而不必像常规操作那样依次执行以下步骤：选择笔记，将鼠标移到字段上，选中字段内容，然后复制）。<br>
+&nbsp&nbsp&nbsp- <i><b>"Editable"</b></i>：允许直接在表格中编辑部分值，但并非所有值都可以编辑。<br>
+</details>
+---
+<details>
+<summary><b> =JA-JP= 注記。クリックして展開</b></summary>
+設定オプションは次のとおりです：<br>
+<br>
+- <b>"Card Info Dialog Always On Top"</b>：ブール値（つまり、"true" または "false"）。このダイアログを呼び出したウィンドウよりも前面に表示されるウィンドウに、カードの情報を表示できるようにします。<br>
+<br>
+- <b>"Column alignment"</b>：次のいずれかを指定します：<br>
+&nbsp&nbsp&nbsp- <i><b>"Start"</b></i>：列内のテキストを左揃えにします（右から左に記述する言語では右揃え）。<br>
+&nbsp&nbsp&nbsp- <i><b>"Center"</b></i>：列内のテキストを中央揃えにします。<br>
+<br>
+- <b>"Language"</b>：文字列。空の文字列を指定すると、Ankiで設定されている言語に対応する翻訳ファイルをプログラムが検索します。それ以外の場合は、拡張子を除いたファイル名（例：ロシア語の場合は "ru"）を指定してください。このファイルはアドオンのフォルダー内にあります（ファイルの場所の例："...Anki2\addons21\874215009\advancedbrowser\localization\ru.lng"）。Ankiのプログラムから、このアドオンの保存場所を開くことができます：ツール -> アドオン -> このアドオンの名前を選択 -> 「ファイルを表示」ボタンをクリック -> 「advancedbrowser\localization」ディレクトリを開きます。使用したい言語が利用できない場合は、"en.lng" ファイルをその言語用の新しい名前でコピーし、テキストエディターで開いて、=== で囲まれた部分のテキストだけを翻訳してください。<br>
+<br>
+- <b>"Show internal fields"</b>：ブール値（つまり、"true" または "false"）。カードやノートに関連するデータベースフィールドに対応した列をさらに表示します（開発者向けオプション）。<br>
+<br>
+- <b>"Show note counts"</b>：ブール値（つまり、"true" または "false"）。左側のサイドバーにノートの数（カードおよびその他の項目）を表示します。<br>
+<br>
+- <b>"Table content"</b>：次のいずれかを指定します：<br>
+&nbsp&nbsp&nbsp- <i><b>"No interaction"</b></i>：テーブルの内容を操作できません。この設定では、Advanced Browser は通常の Anki ブラウザーと同じように動作します。<br>
+&nbsp&nbsp&nbsp- <i><b>"Selectable"</b></i>：テーブルの内容を選択できます。変更を加えても、すべて無視されます。この設定を使うと、フィールドの内容をすばやくコピーできます（通常の手順では、ノートを選択し、フィールドまでマウスを移動し、その内容を選択してからコピーする必要があります）。<br>
+&nbsp&nbsp&nbsp- <i><b>"Editable"</b></i>：テーブル内で一部の値を直接編集できるようにします。ただし、すべての値を編集できるわけではありません。<br>
 </details>

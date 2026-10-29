@@ -1,0 +1,237 @@
+!!! === $ $ ; setting, block separator, variable start and end, comment start marker
+=== q_Card_State
+Kartenstatus
+=== q_nid
+nid (Notiz-ID)
+=== q_cid
+cid (Karten-ID)
+=== q_Tags_L1 ; level 1 tags
+Tags (Ebene 1)
+=== q_Tags_L2 ; level 2 tags
+Tags (Ebene 2)
+=== q_Tags_L3 ; level 3 tags
+Tags (Ebene 3)
+=== q_Tags_L4 ; level 4 tags
+Tags (Ebene 4)
+=== q_Tags_L5 ; level 5 tags
+Tags (Ebene 5)
+=== q_First_Review
+Erste Wiederholung
+=== q_Last_Review
+Letzte Wiederholung
+=== q_Time_Average
+Zeit (Durchschnitt)
+=== q_Time_Total
+Zeit (Gesamt)
+=== q_Fastest_Review
+Schnellste Wiederholung
+=== q_Slowest_Review
+Langsamste Wiederholung
+=== q_Overdue_Interval
+Uberfalligkeitsintervall
+=== q_per_of_Ivl ; Percentage of scheduled interval
+% des Intervalls
+=== q_Previous_Interval
+Vorheriges Intervall
+=== q_Again_Count
+Anzahl der Wiederholungen mit „Nochmal“
+=== q_Percent_Correct
+Prozentsatz richtig
+=== q_Previous_Duration
+Vorherige Dauer 
+=== q_Created_Time_Note
+Erstellungszeit (Notiz)
+=== q_Created_Date_Card
+Erstellungsdatum (Karte)
+=== q_Created_Time_Card
+Erstellungszeit (Karte)
+=== q_not_exists_create_deck
+existiert nicht. Mochtest du dieses Deck erstellen?
+=== q_Current_Deck_Filtered
+Aktuelles gefiltertes Deck
+=== q_Flag
+Markierung
+=== q_Advanced
+Erweitert
+=== q_Card
+Kartentyp
+=== q_Tags
+Tags
+=== q_Note
+Notiztyp
+=== q_Deck
+Deck
+=== q_Ease
+Leichtigkeit
+=== q_Original_Deck
+Ursprungliches Deck
+=== q_Note_internal
+Notiz (intern) 
+=== q_Card_internal
+Karte (intern)
+=== q_Note_ID_in
+Notiz-ID
+=== q_Note_Guid
+Notiz-GUID
+=== q_Model_ID
+Modell-ID
+=== q_Note_USN
+Notiz-USN
+=== q_Note_Fields
+Notizfelder
+=== q_Note_Flags
+Notizmarkierungen
+=== q_Note_Data
+Notizdaten
+=== q_Card_ID_in
+Karten-ID
+=== q_Deck_ID
+Deck-ID
+=== q_Original_Deck_ID
+ID des ursprunglichen Decks
+=== q_Card_Ordinal
+Kartenordinalzahl
+=== q_Card_USN
+Karten-USN
+=== q_Card_Type
+Kartentyp
+=== q_Lrn
+Lernen
+=== q_Rev
+Wiederholen 
+=== q_Card_Queue
+Kartenwarteschlange
+=== q_days
+Tage
+=== q_Card_Left
+Verbleibende Karten
+=== q_Values_may_be_inconsistents
+Mochtest du den Warteschlangentyp der Karte wirklich andern? Die Werte konnen inkonsistent sein, wenn du den Kartentyp, das Falligkeitsdatum usw. nicht anderst.
+=== q_If_the_card_is_not_already_in_a_filtered_deck
+Mochtest du das ursprungliche Falligkeitsdatum wirklich andern? Wenn sich die Karte nicht bereits in einem gefilterten Deck befindet oder in eines verschoben wird, kann dies zu unerwarteten Auswirkungen fuhren.
+=== q_Card_Original_Due
+Ursprungliches Falligkeitsdatum der Karte
+=== q_Fields_all
+Felder (alle)
+=== q_Fields_in_models
+Felder (in Notiztypen)
+=== q_Fields_Reset
+Felder zurucksetzen
+=== q_The_field_not_belong_note_type ; in the translation, be sure to check for the presence of two parameters: %s
+Das Feld „%s“ gehort nicht zum Notiztyp „%s“.
+=== q_Current_note_fields
+Aktuelle Notizfelder
+=== q_Back
+Zuruck
+=== q_Forward
+Vorwarts
+=== q_Column_Settings
+Spalteneinstellungen
+=== q_notes
+Notizen
+=== q_cards
+Karten
+=== q_All_files
+Alle Dateien
+=== q_Error
+Fehler
+=== q_No_data_to_save
+Keine Daten zum Speichern
+=== q_Save_Column_Settings
+Spalteneinstellungen speichern
+=== q_Incorrect_extension
+Falsche Dateierweiterung
+=== q_It_is_recommended_to_save
+Es wird empfohlen, die Datei mit folgender Erweiterung zu speichern
+=== q_Save_it_anyway
+Trotzdem speichern?
+=== q_Success
+Erfolg
+=== q_Settings_saved_to_file
+Einstellungen in Datei gespeichert
+=== q_Columns 
+Spalten
+=== q_Failed_to_save_file
+Datei konnte nicht gespeichert werden
+=== q_Open_Column_Settings
+Spalteneinstellungen offnen
+=== q_This_file_has_the_wrong_extension
+Diese Datei hat die falsche Dateierweiterung
+=== q_Expected
+Erwartet
+=== q_for_settings
+fur Einstellungen
+=== q_Still_open
+Trotzdem offnen?
+=== q_Type_mismatch
+Typ stimmt nicht uberein
+=== q_This_file_contains_settings_for
+Diese Datei enthalt Einstellungen fur
+=== q_and_you_have_a_browser_open
+und du hast einen Browser geoffnet
+=== q_Still_download
+Trotzdem herunterladen?
+=== q_The_file_does_not_contain_column_data
+Die Datei enthalt keine Spaltendaten
+=== q_Settings_loaded_from_file
+Einstellungen aus Datei geladen
+=== q_Date_saved
+Speicherdatum
+=== q_unknown
+unbekannt
+=== q_The_file_is_damaged_or_incorrectly_formatted
+Die Datei ist beschadigt oder falsch formatiert
+=== q_Failed_to_upload_file
+Datei konnte nicht hochgeladen werden
+=== q_Column_order
+Spaltenreihenfolge
+=== q_Filter
+Filter
+=== q_Column_filter
+Spaltenfilter
+=== q_Save
+Speichern
+=== q_Open
+Offnen
+=== q_Column_Operations
+Spaltenoperationen
+=== q_To_the_beginning
+An den Anfang
+=== q_Up
+Nach oben
+=== q_Down
+Nach unten
+=== q_To_the_end
+An das Ende
+=== q_Delete
+Loschen
+=== q_Sort
+Sortieren
+=== q_No_selected
+Keine Auswahl
+=== q_Select_items_to_sort
+Elemente zum Sortieren auswahlen
+=== q_Sort_selected
+Ausgewahlte sortieren
+=== q_selected_items_by_name
+ausgewahlte Elemente nach Namen?
+=== q_Select_items_to_remove
+Elemente zum Entfernen auswahlen
+=== q_Deletion_confirmation
+Loschen bestatigen
+=== q_selected
+ausgewahlt?
+=== q_Sidebar
+Seitenleiste
+=== q_Edit_field
+Feld bearbeiten
+=== q_Update_will_change_the_current_row
+Aktualisieren (andert die aktuelle Zeile)
+=== q_Apply_search_will_remember_the_current_line
+Suche anwenden (merkt sich die aktuelle Zeile)
+=== q_Last_Interval
+Letztes Intervall
+=== q_Last_Duration
+Letzte Dauer
+=== q_Step
+Lernschritt

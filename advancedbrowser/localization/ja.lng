@@ -1,0 +1,237 @@
+!!! === $ $ ; setting, block separator, variable start and end, comment start marker
+=== q_Card_State
+カードの状態
+=== q_nid
+nid（ノートID）
+=== q_cid
+cid（カードID）
+=== q_Tags_L1 ; level 1 tags
+タグ（レベル1）
+=== q_Tags_L2 ; level 2 tags
+タグ（レベル2）
+=== q_Tags_L3 ; level 3 tags
+タグ（レベル3）
+=== q_Tags_L4 ; level 4 tags
+タグ（レベル4）
+=== q_Tags_L5 ; level 5 tags
+タグ（レベル5）
+=== q_First_Review
+初回の復習
+=== q_Last_Review
+最終復習
+=== q_Time_Average
+時間（平均）
+=== q_Time_Total
+時間（合計）
+=== q_Fastest_Review
+最短の復習時間
+=== q_Slowest_Review
+最長の復習時間
+=== q_Overdue_Interval
+期限超過期間
+=== q_per_of_Ivl ; Percentage of scheduled interval
+間隔の割合（%）
+=== q_Previous_Interval
+前回の間隔
+=== q_Again_Count
+「もう一度」の回数
+=== q_Percent_Correct
+正答率（%）
+=== q_Previous_Duration
+前回の所要時間
+=== q_Created_Time_Note
+ノートの作成時刻
+=== q_Created_Date_Card
+カードの作成日
+=== q_Created_Time_Card
+カードの作成時刻
+=== q_not_exists_create_deck
+存在しません。このデッキを作成しますか？
+=== q_Current_Deck_Filtered
+現在のデッキ（フィルターデッキ）
+=== q_Flag
+フラグ
+=== q_Advanced
+詳細設定
+=== q_Card
+カードタイプ
+=== q_Tags
+タグ
+=== q_Note
+ノートタイプ
+=== q_Deck
+デッキ
+=== q_Ease
+易しさ
+=== q_Original_Deck
+元のデッキ
+=== q_Note_internal
+ノート（内部）
+=== q_Card_internal
+カード（内部）
+=== q_Note_ID_in
+ノートID
+=== q_Note_Guid
+ノートGUID
+=== q_Model_ID
+モデルID
+=== q_Note_USN
+ノートUSN
+=== q_Note_Fields
+ノートのフィールド
+=== q_Note_Flags
+ノートのフラグ
+=== q_Note_Data
+ノートデータ
+=== q_Card_ID_in
+カードID
+=== q_Deck_ID
+デッキID
+=== q_Original_Deck_ID
+元のデッキID
+=== q_Card_Ordinal
+カードの序数
+=== q_Card_USN
+カードUSN
+=== q_Card_Type
+カードタイプ
+=== q_Lrn
+学習
+=== q_Rev
+復習
+=== q_Card_Queue
+カードのキュー
+=== q_days
+日
+=== q_Card_Left
+カードの残り回数
+=== q_Values_may_be_inconsistents
+カードタイプを変更せずに、カードのキュータイプを本当に変更しますか？カードタイプや期限などを変更しない場合、値に不整合が生じる可能性があります。
+=== q_If_the_card_is_not_already_in_a_filtered_deck
+元の期限を本当に変更しますか？カードがすでにフィルターデッキに入っている場合、またはフィルターデッキに移動した場合を除き、予期しない影響が生じる可能性があります。
+=== q_Card_Original_Due
+カードの元の期限
+=== q_Fields_all
+すべてのフィールド
+=== q_Fields_in_models
+モデル内のフィールド
+=== q_Fields_Reset
+フィールドのリセット
+=== q_The_field_not_belong_note_type ; in the translation, be sure to check for the presence of two parameters: %s
+フィールド「%s」はノートタイプ「%s」に属していません。
+=== q_Current_note_fields
+現在のノートのフィールド
+=== q_Back
+戻る
+=== q_Forward
+進む
+=== q_Column_Settings
+列の設定
+=== q_notes
+ノート
+=== q_cards
+カード
+=== q_All_files
+すべてのファイル
+=== q_Error
+エラー
+=== q_No_data_to_save
+保存するデータがありません
+=== q_Save_Column_Settings
+列の設定を保存
+=== q_Incorrect_extension
+拡張子が正しくありません
+=== q_It_is_recommended_to_save
+次の拡張子を付けてファイルを保存することをお勧めします
+=== q_Save_it_anyway
+それでも保存しますか？
+=== q_Success
+成功
+=== q_Settings_saved_to_file
+設定をファイルに保存しました
+=== q_Columns 
+列
+=== q_Failed_to_save_file
+ファイルの保存に失敗しました
+=== q_Open_Column_Settings
+列の設定を開く
+=== q_This_file_has_the_wrong_extension
+このファイルの拡張子は正しくありません
+=== q_Expected
+期待される
+=== q_for_settings
+設定用
+=== q_Still_open
+それでも開きますか？
+=== q_Type_mismatch
+型が一致しません
+=== q_This_file_contains_settings_for
+このファイルには次の設定が含まれています：
+=== q_and_you_have_a_browser_open
+また、ブラウザーが開いています
+=== q_Still_download
+それでもダウンロードしますか？
+=== q_The_file_does_not_contain_column_data
+このファイルには列のデータが含まれていません
+=== q_Settings_loaded_from_file
+ファイルから設定を読み込みました
+=== q_Date_saved
+保存日
+=== q_unknown
+不明
+=== q_The_file_is_damaged_or_incorrectly_formatted
+ファイルが破損しているか、形式が正しくありません
+=== q_Failed_to_upload_file
+ファイルのアップロードに失敗しました
+=== q_Column_order
+列の順序
+=== q_Filter
+フィルター
+=== q_Column_filter
+列のフィルター
+=== q_Save
+保存
+=== q_Open
+開く
+=== q_Column_Operations
+列の操作
+=== q_To_the_beginning
+先頭へ
+=== q_Up
+上へ
+=== q_Down
+下へ
+=== q_To_the_end
+末尾へ
+=== q_Delete
+削除
+=== q_Sort
+並べ替え
+=== q_No_selected
+選択されていません
+=== q_Select_items_to_sort
+並べ替える項目を選択してください
+=== q_Sort_selected
+選択した項目を並べ替える
+=== q_selected_items_by_name
+選択した項目を名前順に並べ替えますか？
+=== q_Select_items_to_remove
+削除する項目を選択してください
+=== q_Deletion_confirmation
+削除の確認
+=== q_selected
+選択されていますか？
+=== q_Sidebar
+サイドバー
+=== q_Edit_field
+フィールドを編集
+=== q_Update_will_change_the_current_row
+更新（現在の行が変更されます）
+=== q_Apply_search_will_remember_the_current_line
+検索を適用（現在の行を記憶します）
+=== q_Last_Interval
+前回の間隔
+=== q_Last_Duration
+前回の所要時間
+=== q_Step
+ステップ

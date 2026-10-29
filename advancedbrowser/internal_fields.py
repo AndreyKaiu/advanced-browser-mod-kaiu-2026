@@ -284,7 +284,7 @@ class InternalFields:
 
         cc = advBrowser.newCustomColumn(
             type="ctype",
-            name=q("q_Card_Type"),
+            name=q("q_Card_State"),
             onSort=lambda: "c.type asc nulls last",
             onData=lambda c, n, t: {
                 0: tr.actions_new(),
