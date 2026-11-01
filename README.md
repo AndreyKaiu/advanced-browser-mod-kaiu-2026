@@ -116,6 +116,18 @@ The switcher between cards and notes has been returned to its original state to 
 
 Originally, this add-on used the labels "Card" instead of "Card Type" and "Note" instead of "Note Type." I have restored the full names so that they match the column headers used in Anki by default. In the card info properties, the label will now appear as "Card State." I also fixed a bug present in the original version of the add-on: sorting by the "Card Type" column did not work correctly when the note type was "Cloze."
 
+**Added since version 4.0.3b, date: 2026-11-01**
+
+At the user's request, the following options have been added: the ability to hide buttons (or individual buttons); the ability to disable the prompt/query string that shows what generated the table rows; and the ability to disable the row highlighting provided by this add-on (reverting to the standard highlighting already present in Anki). Three options have been added for this purpose:
+
+- "Hide the button for which the value is set to one"
+- "Hide the query string used to generate the table"
+- "Hide custom row highlighting"
+
+The add-on now supports 12 languages.
+
+<img width="1063" height="578" alt="image" src="https://github.com/user-attachments/assets/cde9bab1-9cbf-429b-9ec0-cdefcd9b6275" />
+
 
 #### HELP AND SUPPORT
 
@@ -125,6 +137,8 @@ I don't get notified of your reviews, and properly troubleshooting an issue thro
 
 
 #### VERSIONS
+- 4.0.3b, date: 2026-11-01.  3 options have been added: "Hide the button for which the value is set to one" ("000000000"); "Hide the query string used to generate the table" (false); "Hide custom row highlighting" (false). The add-on supports 12 languages.
+- 
 - 4.0.2b, date: 2026-10-29. "Card" => "Card Type"; "Note" => "Note Type". Fixed an issue with the "Card Type" field when using a "Cloze" note type.
   
 - 4.0.1b, date: 2026-06-26. The button to view selected cards will now select cards or notes, depending on what view you currently have in your table.
