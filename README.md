@@ -138,7 +138,7 @@ I don't get notified of your reviews, and properly troubleshooting an issue thro
 
 #### VERSIONS
 - 4.0.3b, date: 2026-11-01.  3 options have been added: "Hide the button for which the value is set to one" ("000000000"); "Hide the query string used to generate the table" (false); "Hide custom row highlighting" (false). The add-on supports 12 languages.
-  
+
 - 4.0.2b, date: 2026-10-29. "Card" => "Card Type"; "Note" => "Note Type". Fixed an issue with the "Card Type" field when using a "Cloze" note type.
   
 - 4.0.1b, date: 2026-06-26. The button to view selected cards will now select cards or notes, depending on what view you currently have in your table.
