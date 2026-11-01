@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 4.0.2b
+# Version: 4.0.3b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -23,6 +23,11 @@ from typing import Dict, Optional
 from aqt.theme import theme_manager
 from aqt.utils import tr
 from .config import getCardInfoDialogAlwaysOnTop
+from .config import getHideButton
+from .config import getHideALLButton
+from .config import getHideQueryString
+from .config import getHideCustomRrowHighlighting
+
 
 from . import config
 import datetime
@@ -300,7 +305,8 @@ def patched_paint(self, painter, option, index):
         painter.drawRect(rect)
         painter.restore()
 
-StatusDelegate.paint = patched_paint
+if not getHideCustomRrowHighlighting():
+    StatusDelegate.paint = patched_paint
 
 # ⬆⬆⬆⬆⬆ kaiu: 2026-01-05 SHOW AND COLOR ON SELECTION ⬆⬆⬆⬆⬆ +++++
 
@@ -1748,21 +1754,68 @@ def create_toolbar_for_left_panel(browser: Browser):
     
     toolbar.setMinimumWidth(150)
     
-    toolbar2 = QFrame()
-    toolbar2.setMinimumWidth(150)
+    
+    toolbar1 = QFrame()   
+    layout1 = QHBoxLayout(toolbar1)
+    layout1.setContentsMargins(1, 1, 1, 1)
+    layout1.setSpacing(2)
+    
+    toolbar2 = QFrame()   
+    layout2 = QHBoxLayout(toolbar2)
+    layout2.setContentsMargins(1, 1, 1, 1)
+    layout2.setSpacing(2)
+    
+    toolbar3 = QFrame()   
+    layout3 = QHBoxLayout(toolbar3)
+    layout3.setContentsMargins(1, 1, 1, 1)
+    layout3.setSpacing(2)
+    
+    toolbar4 = QFrame()   
+    layout4 = QHBoxLayout(toolbar4)
+    layout4.setContentsMargins(1, 1, 1, 1)
+    layout4.setSpacing(2)
+    
+    toolbar5 = QFrame()   
+    layout5 = QHBoxLayout(toolbar5)
+    layout5.setContentsMargins(1, 1, 1, 1)
+    layout5.setSpacing(2)
+    
+    toolbar6 = QFrame()   
+    layout6 = QHBoxLayout(toolbar6)
+    layout6.setContentsMargins(1, 1, 1, 1)
+    layout6.setSpacing(2)
+    
+    toolbar7 = QFrame()   
+    layout7 = QHBoxLayout(toolbar7)
+    layout7.setContentsMargins(1, 1, 1, 1)
+    layout7.setSpacing(2)
+    
+    toolbar8 = QFrame()   
+    layout8 = QHBoxLayout(toolbar8)
+    layout8.setContentsMargins(1, 1, 1, 1)
+    layout8.setSpacing(2)
+    
+    toolbar9 = QFrame()   
+    layout9 = QHBoxLayout(toolbar9)
+    layout9.setContentsMargins(1, 1, 1, 1)
+    layout9.setSpacing(2)
+    
+    
+    #toolbar2 = QFrame()
+    #toolbar2.setMinimumWidth(150)
     
     # toolbar.setSizePolicy(
     #     QSizePolicy.Policy.Ignored,
     #     QSizePolicy.Policy.Fixed
     # )
-    toolbar2.setSizePolicy(
-        QSizePolicy.Policy.Minimum,
-        QSizePolicy.Policy.Fixed
-    )
+    #toolbar2.setSizePolicy(
+    #    QSizePolicy.Policy.Minimum,
+    #    QSizePolicy.Policy.Fixed
+    #)
     
-    layout2 = QHBoxLayout(toolbar2)
-    layout2.setContentsMargins(1, 1, 1, 1)
-    layout2.setSpacing(5)
+    #layout2 = QHBoxLayout(toolbar2)
+    #layout2.setContentsMargins(1, 1, 1, 1)
+    #layout2.setSpacing(5)
     
     
     
@@ -1819,15 +1872,47 @@ def create_toolbar_for_left_panel(browser: Browser):
 
     btn_toggle_sidebar = btn_create(text="☰", tooltip=btn_name_toggle_sidebar, style_sheet=style_btn_left)    
     btn_toggle_sidebar.clicked.connect(lambda: browser.toggle_sidebar())
-    layout.addWidget(btn_toggle_sidebar)
+    layout1.addWidget(btn_toggle_sidebar)
+    
+        
 # Switch LEFT
     # switch = browser._switch
     # switch.setParent(toolbar)    
     # layout.addWidget(switch)      
     
+    layout.addWidget(toolbar1)
     layout.addWidget(toolbar2)
-
-
+    layout.addWidget(toolbar3)
+    layout.addWidget(toolbar4)
+    layout.addWidget(toolbar5)
+    layout.addWidget(toolbar6)
+    layout.addWidget(toolbar7)
+    layout.addWidget(toolbar8)
+    layout.addWidget(toolbar9)
+    
+    
+    hdbtn = getHideButton()
+    if len(hdbtn) > 0 and hdbtn[0]:
+        toolbar1.hide()
+    if len(hdbtn) > 1 and hdbtn[1]:
+        toolbar2.hide()
+    if len(hdbtn) > 2 and hdbtn[2]:
+        toolbar3.hide()
+    if len(hdbtn) > 3 and hdbtn[3]:
+        toolbar4.hide()
+    if len(hdbtn) > 4 and hdbtn[4]:
+        toolbar5.hide()
+    if len(hdbtn) > 5 and hdbtn[5]:
+        toolbar6.hide()
+    if len(hdbtn) > 6 and hdbtn[6]:
+        toolbar7.hide()
+    if len(hdbtn) > 7 and hdbtn[7]:
+        toolbar8.hide()
+    if len(hdbtn) > 8 and hdbtn[8]:
+        toolbar9.hide()
+    if getHideALLButton():
+        toolbar.hide()
+        
 
     def table_reset(browser: Browser):   
         try:
@@ -2183,49 +2268,95 @@ def create_toolbar_for_left_panel(browser: Browser):
 
     # Buttons to the right of the Switch
     btn_back = btn_create(text="←", tooltip=q("q_Back") + " [Alt+Left]", style_sheet=style_btn_left)    
-    btn_back.clicked.connect(lambda: go_back(browser))
-    btn_back.setShortcut(QKeySequence("Alt+Left"))
+    if len(hdbtn) < 1 or not hdbtn[1]:
+        btn_back.clicked.connect(lambda: go_back(browser)) # this won't work if the button is hidden    
+        btn_back.setShortcut(QKeySequence("Alt+Left"))        
+    else:
+        shortcut_btn_back = QShortcut(QKeySequence("Alt+Left"), browser)
+        shortcut_btn_back.activated.connect(lambda: go_back(browser))    
     btn_back.setEnabled(False)
     layout2.addWidget(btn_back)
     browser._btn_back = btn_back
-
+   
+   
     btn_forward = btn_create(text="→", tooltip=q("q_Forward") + " [Alt+Right]", style_sheet=style_btn_left)    
-    btn_forward.clicked.connect(lambda: go_forward(browser))
-    btn_forward.setShortcut(QKeySequence("Alt+Right"))
+    if len(hdbtn) < 2 or not hdbtn[2]:
+        btn_forward.clicked.connect(lambda: go_forward(browser)) # this won't work if the button is hidden
+        btn_forward.setShortcut(QKeySequence("Alt+Right"))
+    else:    
+        shortcut_btn_forward = QShortcut(QKeySequence("Alt+Right"), browser)
+        shortcut_btn_forward.activated.connect(lambda: go_forward(browser))    
     btn_forward.setEnabled(False)
-    layout2.addWidget(btn_forward)
+    layout3.addWidget(btn_forward)
     browser._btn_forward = btn_forward
     browser._all_history_n = 0
 
     btn_edit_field = btn_create(text="✏️", tooltip=q("q_Edit_field") + " [F2]", style_sheet=style_btn_right)    
-    btn_edit_field.clicked.connect(lambda: go_edit_field(browser))
-    btn_edit_field.setShortcut(QKeySequence("F2"))
-    layout2.addWidget(btn_edit_field)       
+    if len(hdbtn) < 3 or not hdbtn[3]:
+        btn_edit_field.clicked.connect(lambda: go_edit_field(browser)) # this won't work if the button is hidden
+        btn_edit_field.setShortcut(QKeySequence("F2"))
+    else:    
+        shortcut_btn_edit_field = QShortcut(QKeySequence("F2"), browser)
+        shortcut_btn_edit_field.activated.connect(lambda: go_edit_field(browser))    
+    layout4.addWidget(btn_edit_field)       
 
-    btn_reorder_columns = btn_create(text="⮂", tooltip=q("q_Column_order") + " [F10]", style_sheet=style_btn_right)    
-    btn_reorder_columns.clicked.connect(lambda: show_reorder_columns(browser))
-    btn_reorder_columns.setShortcut(QKeySequence("F10"))
-    layout2.addWidget(btn_reorder_columns)
+    btn_reorder_columns = btn_create(text="⮂", tooltip=q("q_Column_order") + " [F10]", style_sheet=style_btn_right)
+    if len(hdbtn) < 4 or not hdbtn[4]:
+        btn_reorder_columns.clicked.connect(lambda: show_reorder_columns(browser)) # this won't work if the button is hidden
+        btn_reorder_columns.setShortcut(QKeySequence("F10"))
+    else:
+        shortcut_btn_reorder_columns = QShortcut(QKeySequence("F10"), browser)
+        shortcut_btn_reorder_columns.activated.connect(lambda: show_reorder_columns(browser)) 
 
-    btn_refresh_tbl = btn_create(text="↻", tooltip=q("q_Update_will_change_the_current_row") + " [Shift+F9]", style_sheet=style_btn_right)    
-    btn_refresh_tbl.clicked.connect(lambda: table_reset(browser))
-    btn_refresh_tbl.setShortcut(QKeySequence("Shift+F9"))
-    layout2.addWidget(btn_refresh_tbl) 
+        
+    
+    
+    layout5.addWidget(btn_reorder_columns)
+
+    btn_refresh_tbl = btn_create(text="↻", tooltip=q("q_Update_will_change_the_current_row") + " [Shift+F9]", style_sheet=style_btn_right)   
+    if len(hdbtn) < 5 or not hdbtn[5]:
+        btn_refresh_tbl.clicked.connect(lambda: table_reset(browser)) # this won't work if the button is hidden
+        btn_refresh_tbl.setShortcut(QKeySequence("Shift+F9"))
+    else:  
+        shortcut_btn_refresh_tbl = QShortcut(QKeySequence("Shift+F9"), browser)
+        shortcut_btn_refresh_tbl.activated.connect(lambda: table_reset(browser)) 
+    
+    layout6.addWidget(btn_refresh_tbl) 
 
     btn_run_find_tbl = btn_create(text="🔍", tooltip=q("q_Apply_search_will_remember_the_current_line") + " [F9]", style_sheet=style_btn_right)    
-    btn_run_find_tbl.clicked.connect(lambda: run_find_tbl(browser))
-    btn_run_find_tbl.setShortcut(QKeySequence("F9"))
-    layout2.addWidget(btn_run_find_tbl)
+    if len(hdbtn) < 6 or not hdbtn[6]:
+        btn_run_find_tbl.clicked.connect(lambda: run_find_tbl(browser)) # this won't work if the button is hidden
+        btn_run_find_tbl.setShortcut(QKeySequence("F9"))
+    else:
+        shortcut_btn_run_find_tbl = QShortcut(QKeySequence("F9"), browser)
+        shortcut_btn_run_find_tbl.activated.connect(lambda: run_find_tbl(browser)) 
+    
+    
+    layout7.addWidget(btn_run_find_tbl)
 
     btn_card_info = btn_create(text="ⓘ", tooltip=tr.actions_card_info() + " [Shift+F1]", style_sheet=style_btn_right)    
-    btn_card_info.clicked.connect(lambda: show_hide_card_info(browser))
-    btn_card_info.setShortcut(QKeySequence("Shift+F1"))
-    layout2.addWidget(btn_card_info)
+    if len(hdbtn) < 7 or not hdbtn[7]:
+        btn_card_info.clicked.connect(lambda: show_hide_card_info(browser)) # this won't work if the button is hidden
+        btn_card_info.setShortcut(QKeySequence("Shift+F1"))
+    else:
+        shortcut_btn_card_info = QShortcut(QKeySequence("Shift+F1"), browser)
+        shortcut_btn_card_info.activated.connect(lambda: show_hide_card_info(browser)) 
+    
+    
+    layout8.addWidget(btn_card_info)
 
     btn_show_sel_notes = btn_create(text="👁️", tooltip=tr.qt_accel_select_notes().replace("&", "") + " (" + tr.browsing_cards() + ") + " + tr.actions_preview() + " [Shift+F2]", style_sheet=style_btn_right)    
-    btn_show_sel_notes.clicked.connect(lambda: show_sel_notes(browser))
-    btn_show_sel_notes.setShortcut(QKeySequence("Shift+F2"))
-    layout2.addWidget(btn_show_sel_notes)
+    if len(hdbtn) < 8 or not hdbtn[8]:
+        btn_show_sel_notes.clicked.connect(lambda: show_sel_notes(browser)) # this won't work if the button is hidden
+        btn_show_sel_notes.setShortcut(QKeySequence("Shift+F2"))
+    else:
+        shortcut_btn_show_sel_notes = QShortcut(QKeySequence("Shift+F2"), browser)
+        shortcut_btn_show_sel_notes.activated.connect(lambda: show_sel_notes(browser)) 
+    
+    
+    layout9.addWidget(btn_show_sel_notes)
+    
+    
     
     # Stretch to the right
     layout.addStretch()
@@ -2265,6 +2396,12 @@ def create_toolbar_for_left_panel(browser: Browser):
 
     label_request_layout.addWidget(label_request)
     main_layout.addWidget(label_request_panel)
+    
+    if getHideQueryString():
+        label_request_panel.hide()
+        
+       
+        
     
     return main_widget
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Version: 4.0.2b
+# Version: 4.0.3b
 # See github page to report issues or to contribute:
 # https://github.com/AndreyKaiu/advanced-browser-mod-kaiu-2026
 #
@@ -30,13 +30,16 @@ if lng == "":
     sl = set_lang(current_language)
     if not sl:
         text = f"""ERROR ADVANCEDBROWSER! The file '{current_language+".lng"}' was not found or the file's contents could not be loaded correctly."""
-        tooltip(text)       
+        print(text)
+        sl = set_lang("en")        
+        if not sl:            
+            tooltip(text)       
 else:
     sl = set_lang(lng)
     if not sl:
+        sl = set_lang("en")
         text = f"""ERROR ADVANCEDBROWSER! The file '{lng+".lng"}' was not found or the file's contents could not be loaded correctly."""
         tooltip(text)
-
 
 
 from aqt import mw

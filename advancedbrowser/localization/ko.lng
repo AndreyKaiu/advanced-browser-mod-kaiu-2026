@@ -1,0 +1,237 @@
+!!! === $ $ ; setting, block separator, variable start and end, comment start marker
+=== q_Card_State
+카드 상태
+=== q_nid
+nid (노트 ID)
+=== q_cid
+cid (카드 ID)
+=== q_Tags_L1 ; level 1 tags
+태그 (레벨 1)
+=== q_Tags_L2 ; level 2 tags
+태그 (레벨 2)
+=== q_Tags_L3 ; level 3 tags
+태그 (레벨 3)
+=== q_Tags_L4 ; level 4 tags
+태그 (레벨 4)
+=== q_Tags_L5 ; level 5 tags
+태그 (레벨 5)
+=== q_First_Review
+첫 번째 복습
+=== q_Last_Review
+마지막 복습
+=== q_Time_Average
+시간 (평균)
+=== q_Time_Total
+시간 (총합)
+=== q_Fastest_Review
+가장 빠른 복습
+=== q_Slowest_Review
+가장 느린 복습
+=== q_Overdue_Interval
+초과된 간격
+=== q_per_of_Ivl ; Percentage of scheduled interval
+간격의 %
+=== q_Previous_Interval
+이전 간격
+=== q_Again_Count
+다시 학습한 횟수
+=== q_Percent_Correct
+정답률
+=== q_Previous_Duration
+이전 소요 시간
+=== q_Created_Time_Note
+노트 생성 시간
+=== q_Created_Date_Card
+카드 생성 날짜
+=== q_Created_Time_Card
+카드 생성 시간
+=== q_not_exists_create_deck
+존재하지 않습니다. 이 덱을 생성하시겠습니까?
+=== q_Current_Deck_Filtered
+현재 덱 (필터링됨)
+=== q_Flag
+플래그
+=== q_Advanced
+고급
+=== q_Card
+카드 유형
+=== q_Tags
+태그
+=== q_Note
+노트 유형
+=== q_Deck
+덱
+=== q_Ease
+난이도
+=== q_Original_Deck
+원래 덱
+=== q_Note_internal
+노트 (내부)
+=== q_Card_internal
+카드 (내부)
+=== q_Note_ID_in
+노트 ID
+=== q_Note_Guid
+노트 GUID
+=== q_Model_ID
+모델 ID
+=== q_Note_USN
+노트 USN
+=== q_Note_Fields
+노트 필드
+=== q_Note_Flags
+노트 플래그
+=== q_Note_Data
+노트 데이터
+=== q_Card_ID_in
+카드 ID
+=== q_Deck_ID
+덱 ID
+=== q_Original_Deck_ID
+원래 덱 ID
+=== q_Card_Ordinal
+카드 순번
+=== q_Card_USN
+카드 USN
+=== q_Card_Type
+카드 유형
+=== q_Lrn
+학습
+=== q_Rev
+복습
+=== q_Card_Queue
+카드 대기열
+=== q_days
+일
+=== q_Card_Left
+남은 카드
+=== q_Values_may_be_inconsistents
+카드 유형을 정말 변경하시겠습니까? 카드 유형, 예정된 값 등을 변경하지 않으면 값이 일치하지 않을 수 있습니다....
+=== q_If_the_card_is_not_already_in_a_filtered_deck
+원래 예정일을 정말 변경하시겠습니까? 카드가 아직 필터링된 덱에 없거나 해당 덱으로 이동하지 않으면 예상치 못한 결과가 발생할 수 있습니다.
+=== q_Card_Original_Due
+카드의 원래 예정일
+=== q_Fields_all
+필드 (전체)
+=== q_Fields_in_models
+필드 (모델 내)
+=== q_Fields_Reset
+필드 초기화
+=== q_The_field_not_belong_note_type ; in the translation, be sure to check for the presence of two parameters: %s
+필드 '%s'은(는) 노트 유형 '%s'에 속하지 않습니다.
+=== q_Current_note_fields
+현재 노트 필드
+=== q_Back
+뒤로
+=== q_Forward
+앞으로
+=== q_Column_Settings
+열 설정
+=== q_notes
+노트
+=== q_cards
+카드
+=== q_All_files
+모든 파일
+=== q_Error
+오류
+=== q_No_data_to_save
+저장할 데이터가 없습니다
+=== q_Save_Column_Settings
+열 설정 저장
+=== q_Incorrect_extension
+잘못된 확장자
+=== q_It_is_recommended_to_save
+다음 확장자로 파일을 저장하는 것이 좋습니다
+=== q_Save_it_anyway
+그래도 저장하시겠습니까?
+=== q_Success
+성공
+=== q_Settings_saved_to_file
+설정이 파일에 저장되었습니다
+=== q_Columns 
+열
+=== q_Failed_to_save_file
+파일 저장 실패
+=== q_Open_Column_Settings
+열 설정 열기
+=== q_This_file_has_the_wrong_extension
+이 파일의 확장자가 올바르지 않습니다
+=== q_Expected
+예상된 확장자
+=== q_for_settings
+설정용
+=== q_Still_open
+계속 여시겠습니까?
+=== q_Type_mismatch
+유형 불일치
+=== q_This_file_contains_settings_for
+이 파일에는 다음 항목에 대한 설정이 포함되어 있습니다
+=== q_and_you_have_a_browser_open
+브라우저가 열려 있습니다
+=== q_Still_download
+계속 다운로드하시겠습니까?
+=== q_The_file_does_not_contain_column_data
+파일에 열 데이터가 없습니다
+=== q_Settings_loaded_from_file
+파일에서 설정을 불러왔습니다
+=== q_Date_saved
+저장 날짜
+=== q_unknown
+알 수 없음
+=== q_The_file_is_damaged_or_incorrectly_formatted
+파일이 손상되었거나 형식이 잘못되었습니다
+=== q_Failed_to_upload_file
+파일 업로드 실패
+=== q_Column_order
+열 순서
+=== q_Filter
+필터
+=== q_Column_filter
+열 필터
+=== q_Save
+저장
+=== q_Open
+열기
+=== q_Column_Operations
+열 작업
+=== q_To_the_beginning
+맨 앞으로
+=== q_Up
+위로
+=== q_Down
+아래로
+=== q_To_the_end
+맨 끝으로
+=== q_Delete
+삭제
+=== q_Sort
+정렬
+=== q_No_selected
+선택된 항목 없음
+=== q_Select_items_to_sort
+정렬할 항목 선택
+=== q_Sort_selected
+선택 항목 정렬
+=== q_selected_items_by_name
+선택한 항목을 이름순으로 정렬하시겠습니까?
+=== q_Select_items_to_remove
+삭제할 항목 선택
+=== q_Deletion_confirmation
+삭제 확인
+=== q_selected
+선택하시겠습니까?
+=== q_Sidebar
+사이드바
+=== q_Edit_field
+필드 편집
+=== q_Update_will_change_the_current_row
+업데이트 (현재 행이 변경됩니다)
+=== q_Apply_search_will_remember_the_current_line
+검색 적용 (현재 행을 기억합니다)
+=== q_Last_Interval
+마지막 간격
+=== q_Last_Duration
+마지막 소요 시간
+=== q_Step
+단계

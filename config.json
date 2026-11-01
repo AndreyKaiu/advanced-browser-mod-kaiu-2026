@@ -4,5 +4,8 @@
     "Language": "",
     "Show internal fields": false,
     "Show note counts": false,
-    "Table content": "No interaction"
+    "Table content": "No interaction",
+    "Hide the button for which the value is set to one": "000000000",
+    "Hide the query string used to generate the table": false,
+    "Hide custom row highlighting": false
 }

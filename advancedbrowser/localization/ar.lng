@@ -1,0 +1,237 @@
+!!! === $ $ ; setting, block separator, variable start and end, comment start marker
+=== q_Card_State
+حالة البطاقة
+=== q_nid
+nid (معرّف الملاحظة)
+=== q_cid
+cid (معرّف البطاقة)
+=== q_Tags_L1 ; level 1 tags
+الوسوم (المستوى 1)
+=== q_Tags_L2 ; level 2 tags
+الوسوم (المستوى 2)
+=== q_Tags_L3 ; level 3 tags
+الوسوم (المستوى 3)
+=== q_Tags_L4 ; level 4 tags
+الوسوم (المستوى 4)
+=== q_Tags_L5 ; level 5 tags
+الوسوم (المستوى 5)
+=== q_First_Review
+المراجعة الأولى
+=== q_Last_Review
+آخر مراجعة
+=== q_Time_Average
+الوقت (المتوسط)
+=== q_Time_Total
+الوقت (الإجمالي)
+=== q_Fastest_Review
+أسرع مراجعة
+=== q_Slowest_Review
+أبطأ مراجعة
+=== q_Overdue_Interval
+فترة التأخير
+=== q_per_of_Ivl ; Percentage of scheduled interval
+٪ من الفترة
+=== q_Previous_Interval
+الفترة السابقة
+=== q_Again_Count
+عدد مرات «مرة أخرى»
+=== q_Percent_Correct
+نسبة الإجابات الصحيحة
+=== q_Previous_Duration
+المدة السابقة
+=== q_Created_Time_Note
+وقت إنشاء الملاحظة
+=== q_Created_Date_Card
+تاريخ إنشاء البطاقة
+=== q_Created_Time_Card
+وقت إنشاء البطاقة
+=== q_not_exists_create_deck
+غير موجود، هل تريد إنشاء هذه المجموعة؟
+=== q_Current_Deck_Filtered
+المجموعة الحالية (المُصفّاة)
+=== q_Flag
+العلامة
+=== q_Advanced
+متقدم
+=== q_Card
+نوع البطاقة
+=== q_Tags
+الوسوم
+=== q_Note
+نوع الملاحظة
+=== q_Deck
+المجموعة
+=== q_Ease
+سهولة التذكر
+=== q_Original_Deck
+المجموعة الأصلية
+=== q_Note_internal
+الملاحظة (داخلي)
+=== q_Card_internal
+البطاقة (داخلي)
+=== q_Note_ID_in
+معرّف الملاحظة
+=== q_Note_Guid
+المعرّف الفريد للملاحظة
+=== q_Model_ID
+معرّف النموذج
+=== q_Note_USN
+USN الملاحظة
+=== q_Note_Fields
+حقول الملاحظة
+=== q_Note_Flags
+علامات الملاحظة
+=== q_Note_Data
+بيانات الملاحظة
+=== q_Card_ID_in
+معرّف البطاقة
+=== q_Deck_ID
+معرّف المجموعة
+=== q_Original_Deck_ID
+معرّف المجموعة الأصلية
+=== q_Card_Ordinal
+ترتيب البطاقة
+=== q_Card_USN
+USN البطاقة
+=== q_Card_Type
+نوع البطاقة
+=== q_Lrn
+التعلّم
+=== q_Rev
+المراجعة
+=== q_Card_Queue
+قائمة انتظار البطاقة
+=== q_days
+أيام
+=== q_Card_Left
+البطاقات المتبقية
+=== q_Values_may_be_inconsistents
+هل تريد حقًا تغيير نوع قائمة انتظار البطاقة؟ قد تصبح القيم غير متسقة إذا لم تغيّر نوع البطاقة وموعد الاستحقاق وما إلى ذلك.
+=== q_If_the_card_is_not_already_in_a_filtered_deck
+هل تريد حقًا تغيير موعد الاستحقاق الأصلي؟ إذا لم تكن البطاقة موجودة بالفعل في مجموعة مُصفّاة، أو لم يتم نقلها إليها، فقد يؤدي ذلك إلى نتائج غير متوقعة.
+=== q_Card_Original_Due
+موعد الاستحقاق الأصلي للبطاقة
+=== q_Fields_all
+الحقول (الكل)
+=== q_Fields_in_models
+الحقول (في النماذج)
+=== q_Fields_Reset
+إعادة تعيين الحقول
+=== q_The_field_not_belong_note_type ; in the translation, be sure to check for the presence of two parameters: %s
+الحقل '%s' لا ينتمي إلى نوع الملاحظة '%s'.
+=== q_Current_note_fields
+حقول الملاحظة الحالية
+=== q_Back
+السابق
+=== q_Forward
+التالي
+=== q_Column_Settings
+إعدادات الأعمدة
+=== q_notes
+ملاحظات
+=== q_cards
+بطاقات
+=== q_All_files
+جميع الملفات
+=== q_Error
+خطأ
+=== q_No_data_to_save
+لا توجد بيانات لحفظها
+=== q_Save_Column_Settings
+حفظ إعدادات الأعمدة
+=== q_Incorrect_extension
+امتداد غير صحيح
+=== q_It_is_recommended_to_save
+يُوصى بحفظ الملف بالامتداد
+=== q_Save_it_anyway
+هل تريد حفظه على أي حال؟
+=== q_Success
+تم بنجاح
+=== q_Settings_saved_to_file
+تم حفظ الإعدادات في الملف
+=== q_Columns 
+الأعمدة
+=== q_Failed_to_save_file
+فشل حفظ الملف
+=== q_Open_Column_Settings
+فتح إعدادات الأعمدة
+=== q_This_file_has_the_wrong_extension
+امتداد هذا الملف غير صحيح
+=== q_Expected
+المتوقع
+=== q_for_settings
+للإعدادات
+=== q_Still_open
+هل تريد المتابعة في الفتح؟
+=== q_Type_mismatch
+عدم تطابق النوع
+=== q_This_file_contains_settings_for
+يحتوي هذا الملف على إعدادات خاصة بـ
+=== q_and_you_have_a_browser_open
+ولديك نافذة المتصفح مفتوحة
+=== q_Still_download
+هل تريد المتابعة في التنزيل؟
+=== q_The_file_does_not_contain_column_data
+لا يحتوي الملف على بيانات الأعمدة
+=== q_Settings_loaded_from_file
+تم تحميل الإعدادات من الملف
+=== q_Date_saved
+تاريخ الحفظ
+=== q_unknown
+غير معروف
+=== q_The_file_is_damaged_or_incorrectly_formatted
+الملف تالف أو بتنسيق غير صحيح
+=== q_Failed_to_upload_file
+فشل تحميل الملف
+=== q_Column_order
+ترتيب الأعمدة
+=== q_Filter
+تصفية
+=== q_Column_filter
+تصفية الأعمدة
+=== q_Save
+حفظ
+=== q_Open
+فتح
+=== q_Column_Operations
+عمليات الأعمدة
+=== q_To_the_beginning
+إلى البداية
+=== q_Up
+لأعلى
+=== q_Down
+لأسفل
+=== q_To_the_end
+إلى النهاية
+=== q_Delete
+حذف
+=== q_Sort
+ترتيب
+=== q_No_selected
+لم يتم تحديد أي عناصر
+=== q_Select_items_to_sort
+حدد العناصر لترتيبها
+=== q_Sort_selected
+ترتيب العناصر المحددة
+=== q_selected_items_by_name
+العناصر المحددة حسب الاسم؟
+=== q_Select_items_to_remove
+حدد العناصر لإزالتها
+=== q_Deletion_confirmation
+تأكيد الحذف
+=== q_selected
+محدد؟
+=== q_Sidebar
+الشريط الجانبي
+=== q_Edit_field
+تحرير الحقل
+=== q_Update_will_change_the_current_row
+تحديث (سيؤدي إلى تغيير الصف الحالي)
+=== q_Apply_search_will_remember_the_current_line
+تطبيق البحث (سيتم تذكّر السطر الحالي)
+=== q_Last_Interval
+الفترة الأخيرة
+=== q_Last_Duration
+المدة الأخيرة
+=== q_Step
+الخطوة
